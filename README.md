@@ -108,9 +108,11 @@ Display a link to the Legal Informations.
 
 Parameters can be provided:
 
-- label, defaulting to 'Legal Informations'
-- title, defaulting to 'Legal Informations'
-- route, defaulting to configured routePrefix + '/legals'.
+- `label`, the displayed link label, defaulting to 'Legal Informations'
+- `title`, the link title, defaulting to 'Legal Informations'
+- `page`, the identifier of the target display unit, defaulting to `lm_legals`
+
+    The default display unit is defined as an inline-edited localized document from `legals` collection.
 
 ### Less mixins
 
