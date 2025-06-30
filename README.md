@@ -16,7 +16,7 @@ The `pwix:core-app` package provides a common framework to applications by gathe
 
         - contact: a contact email address, defaulting to 'no-reply@localhost'
         - label: the label of the application, defaulting to the application name
-        - logo: the path to the logo image, defaulting to '/favicon.svg'
+        - logo: the path to the logo image, defaulting to '/packages/pwix_core-app/resources/favicon.svg'
         - sender: the sender address of all emails sent by the application, defaulting to 'no-reply@localhost'
         - title: the title of the browser window, defaulting to the application name
 
@@ -131,6 +131,10 @@ Parameters can be provided:
 #### `corePoweredBy`
 
 Display a localized link as 'Powered by Meteor'.
+
+#### `coreSaa`
+
+Encapsulates the `saaCreate` component from `pwix:startup-app-admin` package.
 
 ### Less mixins
 
