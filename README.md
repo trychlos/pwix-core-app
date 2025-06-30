@@ -96,9 +96,11 @@ Display a link to the General Terms of Use.
 
 Parameters can be provided:
 
-- label, defaulting to 'General Terms of Use'
-- title, defaulting to 'General Terms of Use'
-- route, defaulting to configured routePrefix + '/gtu'.
+- `label`, the displayed link label, defaulting to 'General Terms of Use'
+- `title`, the link title, defaulting to 'General Terms of Use'
+- `page`, the identifier of the target display unit, defaulting to `lm_gtu`
+
+    The default display unit is defined as an inline-edited localized document from `legals` collection.
 
 #### `coreLegalsLink`
 
