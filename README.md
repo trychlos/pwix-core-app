@@ -18,8 +18,7 @@ The `pwix:core-app` package provides a common framework to applications by gathe
         - label: the label of the application, defaulting to the application name
         - logo: the path to the logo image, defaulting to '/favicon.svg'
         - sender: the sender address of all emails sent by the application, defaulting to 'no-reply@localhost'
-
-- extends `AppPages.RunContext` with internationalization and application administrator helpers
+        - title: the title of the browser window, defaulting to the application name
 
 Goal is to be able to initialize a running (though rather empty) application rather quickly, maximizing time to code actual application features.
 
@@ -53,7 +52,7 @@ The `AppPages.RunContext` class is extended with:
 
 #### `coreAppMain`
 
-The most top component of each displayed page of the application.
+The topmost component of each displayed page of the application.
 
 It takes care of:
 

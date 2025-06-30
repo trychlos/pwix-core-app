@@ -15,7 +15,6 @@ import { strict as assert } from 'node:assert';
 
 import { AppPages } from 'meteor/pwix:app-pages';
 import { EnvSettings } from 'meteor/pwix:env-settings';
-import { pwixI18n } from 'meteor/pwix:i18n';
 
 export class RunContext extends AppPages.RunContext {
 
@@ -33,6 +32,8 @@ export class RunContext extends AppPages.RunContext {
     #logo = new ReactiveVar( null );
     // sender email address
     #sender = new ReactiveVar( null );
+    // application title
+    #title = new ReactiveVar( null );
 
     // private methods
 
@@ -54,9 +55,10 @@ export class RunContext extends AppPages.RunContext {
                     .then(( settings ) => {
                         if( settings ){
                             self.contact( settings.contact || 'AppContact <no-reply@localhost' );
+                            self.label( settings.label || self.name());
                             self.logo( settings.logo || '/favicon.svg' );
                             self.sender( settings.sender || 'AppSender <no-reply@localhost' );
-                            self.label( settings.label || self.name());
+                            self.title( settings.title || self.name());
                         }
                     });
             }
@@ -81,19 +83,6 @@ export class RunContext extends AppPages.RunContext {
     /**
      * Getter/Setter
      * @locus Anywhere
-     * @returns {String} the path to the logo
-     *  A reactive data souce
-     */
-    logo( str ){
-        if( typeof str !== 'undefined' ){
-            this.#logo.set( str );
-        }
-        return this.#logo.get();
-    }
-
-    /**
-     * Getter/Setter
-     * @locus Anywhere
      * @returns {String} the label of the application, read from the environment settings
      *  A reactive data souce
      */
@@ -102,6 +91,19 @@ export class RunContext extends AppPages.RunContext {
             this.#label.set( str );
         }
         return this.#label.get();
+    }
+
+    /**
+     * Getter/Setter
+     * @locus Anywhere
+     * @returns {String} the path to the logo
+     *  A reactive data souce
+     */
+    logo( str ){
+        if( typeof str !== 'undefined' ){
+            this.#logo.set( str );
+        }
+        return this.#logo.get();
     }
 
     /**
@@ -123,6 +125,19 @@ export class RunContext extends AppPages.RunContext {
             this.#sender.set( str );
         }
         return this.#sender.get();
+    }
+
+    /**
+     * Getter/Setter
+     * @locus Anywhere
+     * @returns {String} the title of the application, read from the environment settings
+     *  A reactive data souce
+     */
+    title( str ){
+        if( typeof str !== 'undefined' ){
+            this.#title.set( str );
+        }
+        return this.#title.get();
     }
 }
 

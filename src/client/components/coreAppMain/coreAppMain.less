@@ -1,0 +1,199 @@
+/*
+ * pwix:core-app/src/client/components/coreAppMain/coreAppMain.less
+ */
+
+@import "{pwix:ui-layout}/src/client/constants/breakpoints.less";
+
+body {
+    svg.svg-inline--fa {
+        vertical-align: middle;
+    }
+}
+
+.core-app-main {
+    height: 100vh;
+}
+
+.core-app-title {
+    font-size: 150%;
+    .title {
+        font-style: italic;
+        margin-right: 0.5em;
+    }
+}
+
+// this makes the app-content fill all the vertical space
+//  only works because c-app-content is a direct descendant of c-app-layout
+.t-default-layout.core-app-layout {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .core-app-content {
+        flex-grow: 1;
+        overflow: auto;
+    }
+}
+
+// app-footer is displayed as a droppable ribbon on bottom of the page, with links
+//  we like to have a small padding and a border under the content
+.t-default-layout {
+    .core-app-footer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5em;
+        margin-top: 0.5em;
+        font-size: 90%;
+        a:hover {
+            color: inherit;
+        }
+        .core-app-footer-left {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+
+            .core-site-copyright a {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: start;
+                img {
+                    width: 1.5em;
+                }
+            }
+            .core-powered-by a {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: start;
+            }
+        }
+        .core-app-footer-middle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .core-app-footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            justify-content: center;
+        }
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: lightgray;
+    }
+}
+
+// app-header is displayed as a thick ribbon on top of the page, with item menus and buttons
+//  we like to have a small padding and a border above the content
+.t-default-layout {
+    .core-app-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5em;
+        margin-bottom: 0.5em;
+        .core-app-header-left {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: start;
+            a {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: start;
+            }
+            a:hover {
+                text-decoration: none;
+                color: inherit;
+            }
+            a img {
+                width: 1.75em;
+            }
+            a p {
+                margin-left: 0.5em;
+                font-weight: bold;
+            }
+        }
+        .core-app-header-right {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: end;
+        }
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: lightgray;
+    }
+}
+
+.t-default-layout {
+    .core-app-content {
+        height: 100%;
+        .c-app-preamble {
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: calc( var( --ui-resp-5-1-5 ) * 0.25em );
+            .one {
+                font-size: 200%;
+                font-weight: bold;
+                text-align: center;
+            }
+            .two {
+                width: 35%;
+                img {
+                    width: 100%;
+                }
+            }
+            .three {
+                width: 65%;
+                margin-left: 2em;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .acUserLogin .ac-text-one {
+                    font-size: 105%;
+                    font-weight: bold;
+                    margin-bottom: 0.5em;
+                }
+            }
+            .not-allowed {
+                margin: 5em;
+                font-weight: bold;
+            }
+        }
+        .x-page {
+            padding: 0 0.5em;
+            height: 100%;
+        }
+    }
+}
+
+.t-default-layout {
+    // a responsive padding left and right
+    .app-hpad5 {
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+        @media screen and ( min-width: @ui-sm-width ){
+            margin-left: 1em;
+            margin-right: 1em;
+        }
+        @media screen and ( min-width: @ui-md-width ){
+            margin-left: 2.5em;
+            margin-right: 2.5em;
+        }
+        @media screen and ( min-width: @ui-lg-width ){
+            margin-left: 5em;
+            margin-right:5em;
+        }
+    }
+}
