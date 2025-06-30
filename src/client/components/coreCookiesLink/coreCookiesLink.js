@@ -1,5 +1,10 @@
 /*
- * /imports/client/components/coreCookiesLink/coreCookiesLink.js
+ * pwix:core-app/src/client/components/coreCookiesLink/coreCookiesLink.js
+ *
+ * Parms:
+ * - label: the label displayed as the link, defaults to (localized) 'Cookies management policy'
+ * - title: the title of the link, defaults to (localized) 'Cookies management policy'
+ * - page: the identifier of the target display unit, defaults to 'lm_cookies'
  */
 
 import { pwixI18n } from 'meteor/pwix:i18n';
@@ -15,7 +20,10 @@ Template.coreCookiesLink.helpers({
 
     // the route
     route(){
-        return this.route || ( CoreApp.configure().routePrefix || '' )+'/cookies';
+        const page = this.page || 'lm_cookies';
+        const unit = page ? Meteor.APP.displaySet.byName( page ) : null;
+        const route = unit ? (( CoreApp.configure().routePrefix || '' )+'/'+unit.get( 'route' )).replace( /\/+/g, '/' ) : '';
+        return route;
     },
 
     // the title
