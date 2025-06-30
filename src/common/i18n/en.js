@@ -6,6 +6,12 @@ CoreApp.i18n = {
     ... CoreApp.i18n,
     ... {
         en: {
+            accounts: {
+                login: {
+                    preamble: 'The page you are requesting requires permissions which are only given to identified user accounts.<br />'
+                        +'Please connect and enjoy.<br />'
+                },
+            },
             cookieslink: {
                 label: 'Cookies management policy',
                 title: 'Cookies management policy'

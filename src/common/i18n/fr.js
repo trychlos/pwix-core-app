@@ -6,6 +6,12 @@ CoreApp.i18n = {
     ... CoreApp.i18n,
     ... {
         fr: {
+            accounts: {
+                login: {
+                    preamble: 'La page demandée requiert des permissions uniquement attribuées à des utilisateurs authentifiés.<br />'
+                        +'Merci de vous connecter avant de continuer.<br />'
+                },
+            },
             cookieslink: {
                 label: 'Politique de gestion des cookies',
                 title: 'Politique de gestion des cookies'

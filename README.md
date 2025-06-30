@@ -128,6 +128,10 @@ Parameters can be provided:
 
     The default display unit is defined as an inline-edited localized document from `legals` collection.
 
+#### `coreLogin`
+
+Encapsulates the `acUserLogin` component from `pwix:accounts-ui` package.
+
 #### `corePoweredBy`
 
 Display a localized link as 'Powered by Meteor'.

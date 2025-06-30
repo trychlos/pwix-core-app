@@ -24,6 +24,9 @@ export class RunContext extends AppPages.RunContext {
 
     // private data
 
+    /*
+     * from environment settings
+     */
     // contact email address
     #contact = new ReactiveVar( null );
     // application label
@@ -34,6 +37,16 @@ export class RunContext extends AppPages.RunContext {
     #sender = new ReactiveVar( null );
     // application title
     #title = new ReactiveVar( null );
+
+    /*
+     * computed at runtime
+     */
+    // the content of right part of the header
+    #rightHeader = new ReactiveVar( CoreApp.configure().rightHeader );
+    // the current displayed template and its data
+    #template = new ReactiveVar({ template: null, data: null });
+    // the current tenant entity and validity period
+    #tenant = new ReactiveVar({ entity: null, record: null });
 
     // private methods
 
@@ -64,13 +77,18 @@ export class RunContext extends AppPages.RunContext {
             }
         });
 
+        // trackt the current template and its data
+        Tracker.autorun(() => {
+            console.debug( 'RunContext->template()', self.template());
+        });
+
         return this;
     }
 
     /**
      * Getter/Setter
      * @locus Anywhere
-     * @returns {String} the application contact email address
+     * @returns {String} the application contact email address, read from environment settings
      *  A reactive data souce
      */
     contact( str ){
@@ -96,7 +114,7 @@ export class RunContext extends AppPages.RunContext {
     /**
      * Getter/Setter
      * @locus Anywhere
-     * @returns {String} the path to the logo
+     * @returns {String} the path to the logo, read from environment settings
      *  A reactive data souce
      */
     logo( str ){
@@ -117,7 +135,21 @@ export class RunContext extends AppPages.RunContext {
     /**
      * Getter/Setter
      * @locus Anywhere
-     * @returns {String} the emails sender email address
+     * @returns {String} the emails sender email address, read from environment settings
+     *  A reactive data souce
+     */
+    rightHeader( array ){
+        if( typeof array !== 'undefined' ){
+            assert( array && _.isArray( array ), 'expect an array, got '+array );
+            this.#rightHeader.set( array );
+        }
+        return this.#rightHeader.get();
+    }
+
+    /**
+     * Getter/Setter
+     * @locus Anywhere
+     * @returns {String} the emails sender email address, read from environment settings
      *  A reactive data souce
      */
     sender( str ){
@@ -125,6 +157,37 @@ export class RunContext extends AppPages.RunContext {
             this.#sender.set( str );
         }
         return this.#sender.get();
+    }
+
+    /**
+     * Getter/Setter
+     * @locus Anywhere
+     * @param template the template name
+     * @param data the template data
+     * @returns {Object} the computed current { template, data } object 
+     *  A reactive data souce
+     */
+    template( template, data ){
+        if( typeof template !== 'undefined' ){
+            this.#template.set({ template: template, data: data });
+        }
+        return this.#template.get();
+    }
+
+    /**
+     * Getter/Setter
+     * @locus Anywhere
+     * @param entity the tenant entity
+     * @param record the current tenant validity period
+     * @returns {Object} the computed current { entity, record } object
+     *  In single-tenant mode (where we do not manage validity periods), we still have at least an entity
+     *  A reactive data souce
+     */
+    tenant( entity, record ){
+        if( typeof entity !== 'undefined' ){
+            this.#tenant.set({ entity: entity, record: record });
+        }
+        return this.#tenant.get();
     }
 
     /**
