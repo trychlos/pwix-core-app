@@ -128,6 +128,10 @@ Parameters can be provided:
 
     The default display unit is defined as an inline-edited localized document from `legals` collection.
 
+#### `corePoweredBy`
+
+Display a localized link as 'Powered by Meteor'.
+
 ### Less mixins
 
 #### `.x-btn-variant( @color )`
@@ -144,11 +148,23 @@ Known configuration options are:
 
     Defines the name of the application role. By convention, this name is also a key in settings, and contain an `environments` object addressed by the `APP_ENV` environment variable on the server.
 
+- `colorTheme`
+
+    Defines the default color class for the theme. This class is added to the `coreAppLayout` top component.
+
+    Defaults to `t-default-color`.
+
 - `homeTemplate`
 
     Defines the name of the template to be used to display the (public) home page.
 
     Defaults to `coreAppHome`, which displays the label of the application in the middle of the page.
+
+- `layoutTheme`
+
+    Defines the default layout class for the theme. This class is added to the `coreAppLayout` top component.
+
+    Defaults to `t-default-layout`.
 
 - `mainMenu`
 
