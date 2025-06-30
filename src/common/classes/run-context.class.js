@@ -56,7 +56,7 @@ export class RunContext extends AppPages.RunContext {
                             self.contact( settings.contact || 'AppContact <no-reply@localhost' );
                             self.logo( settings.logo || '/favicon.svg' );
                             self.sender( settings.sender || 'AppSender <no-reply@localhost' );
-                            self.label( settings.title || pwixI18n.label( I18N, 'app.default.label' ));
+                            self.label( settings.label || self.name());
                         }
                     });
             }

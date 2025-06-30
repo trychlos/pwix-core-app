@@ -6,11 +6,6 @@ CoreApp.i18n = {
     ... CoreApp.i18n,
     ... {
         fr: {
-            app: {
-                default: {
-                    title: 'Titre de l\'application (peut-être devriez-vous considérer la configuration d\'un titre dans les paramètres de l\'environnment).'
-                }
-            },
             cookieslink: {
                 label: 'Politique de gestion des cookies',
                 title: 'Politique de gestion des cookies'

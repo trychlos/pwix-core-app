@@ -10,12 +10,14 @@ The `pwix:core-app` package provides a common framework to applications by gathe
 
         - name: the application short name
 
+            It is not localized, and doesn't depend of the running environment
+
     - to be setup in environment settings:
 
         - contact: a contact email address, defaulting to 'no-reply@localhost'
+        - label: the label of the application, defaulting to the application name
         - logo: the path to the logo image, defaulting to '/favicon.svg'
         - sender: the sender address of all emails sent by the application, defaulting to 'no-reply@localhost'
-        - title: the title of the application
 
 - extends `AppPages.RunContext` with internationalization and application administrator helpers
 
@@ -48,6 +50,19 @@ The `AppPages.RunContext` class is extended with:
     Whether the environment settings of the application has a `xxxxxxxx` set to true, defaulting to false.
 
 ### Blaze components
+
+#### `coreAppMain`
+
+The most top component of each displayed page of the application.
+
+It takes care of:
+
+- set the browser window title from the label read from environment settings
+- keeping the running data context,
+- hosting the Tolert (pwix:tolert) messages,
+- hosting the Cookies Manager (pwix:cookies-manager) messages
+
+and then run the `coreAppLayout` component.
 
 #### `coreCookiesLink`
 

@@ -6,7 +6,7 @@ _verbose = function( level ){
     if( CoreApp.configure().verbosity & level ){
         let args = [ ...arguments ];
         args.shift();
-        console.debug( ...args );
+        console.debug( 'pwix:core-app', ...args );
     }
 };
 
