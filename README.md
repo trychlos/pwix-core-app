@@ -2,39 +2,30 @@
 
 ## What is it ?
 
-The `pwix:core-app` package provides a common framework to applications by gathering needed elementary other packages.
+The `pwix:core-app` package provides a common framework to applications by gathering needed elementary other packages:
+
+- define some common semantics, along with the corresponding `AppPages.RunContext` helpers:
+
+    - to be configure()'d:
+
+        - name: the application short name
+
+    - to be setup in environment settings:
+
+        - contact: a contact email address, defaulting to 'no-reply@localhost'
+        - logo: the path to the logo image, defaulting to '/favicon.svg'
+        - sender: the sender address of all emails sent by the application, defaulting to 'no-reply@localhost'
+        - title: the title of the application
+
+- extends `AppPages.RunContext` with internationalization and application administrator helpers
 
 Goal is to be able to initialize a running (though rather empty) application rather quickly, maximizing time to code actual application features.
-
-### pwix:env-settings
-
-`pwix:core-app` extends the `pwix:env-settings` package with some application-level features:
-
-- manage per-environment configuration in a server-side `environments` object, to be addressed by the `APP_ENV` environment variable on the server
-
-- attaches to `EnvSettings` global an `environmentSettings()` async function which returns the current private-filtered environment settings
-
-- manage the reconfiguration of other packages based of got environment settings
 
 ## Provides
 
 ### `CoreApp`
 
 The exported `CoreApp` global object provides following items:
-
-#### Classes
-
-##### `CoreApp.RunContext`
-
-A class to be instanciated by the application.
-
-This package provides a `RunContext` class to the application.
-
-The provided class inherits from `IAppSaa` interface, and make the management of `pwix:startup-app-admin` easier and more generic.
-
-This class is extended with the IAppSaa interface by the package itself.
-
-It is extended too by the `IAppEditable` interface with the `pwix:app-edit` package, and by the `IAppPageable` interface with the `pwix:app-pages` package.
 
 #### Functions
 
@@ -48,6 +39,14 @@ A reactive data source.
 
 Returns the i18n namespace used by the package. Used to add translations at runtime.
 
+### `AppPages.RunContext` extension
+
+The `AppPages.RunContext` class is extended with:
+
+- `xxxxx(): Boolean` method
+
+    Whether the environment settings of the application has a `xxxxxxxx` set to true, defaulting to false.
+
 ### Blaze components
 
 #### `coreCookiesLink`
@@ -56,9 +55,11 @@ Display a link to the Cookies Policy.
 
 Parameters can be provided:
 
-- label, defaulting to 'Cookies management policy'
-- title, defaulting to 'Cookies management policy'
-- route, defaulting to configured routePrefix + '/cookies'.
+- `label`, the displayed link label, defaulting to (localized) 'Cookies management policy'
+- `title`, the link title, defaulting to (localized) 'Cookies management policy'
+- `page`, the identifier of the target display unit, defaulting to `lm_cookies`
+
+    The default display unit is defined as an inline-edited localized document from `legals` collection.
 
 #### `coreFieldCheckIndicator`
 
@@ -83,9 +84,11 @@ Display a link to the Privacy Policy.
 
 Parameters can be provided:
 
-- label, defaulting to 'Privacy Policy'
-- title, defaulting to 'Privacy Policy'
-- route, defaulting to configured routePrefix + '/gdpr'.
+- `label`, the displayed link label, defaulting to 'Privacy Policy'
+- `title`, the link title, defaulting to 'Privacy Policy'
+- `page`, the identifier of the target display unit, defaulting to `lm_gdpr`
+
+    The default display unit is defined as an inline-edited localized document from `legals` collection.
 
 #### `coreGTULink`
 
@@ -119,17 +122,27 @@ The package's behavior can be configured through a call to the `CoreApp.configur
 
 Known configuration options are:
 
-- `adminRole`
-
-    Defines the name of the **application administrator** role.
-
-    Defaults to 'APP_ADMINISTRATOR'.
-
-    As a reminder, this same value is expected to be also configured in the `pwix:startup-app-admin` package.
-
 - `appName`
 
-    Defines the name of the application role. By convention, this name MUST also be a key in settings, and contain an `environments` object addressed by the `APP_ENV` environment variable on the server.
+    Defines the name of the application role. By convention, this name is also a key in settings, and contain an `environments` object addressed by the `APP_ENV` environment variable on the server.
+
+- `homeTemplate`
+
+    Defines the name of the template to be used to display the (public) home page.
+
+    Defaults to `coreAppHome`, which displays the label of the application in the middle of the page.
+
+- `mainMenu`
+
+    Defines the name of the main menu displayed in the header of the pages.
+
+    Defaults to `coreAppMenu`.
+
+- `rightHeaderOrder`
+
+    Defines the ordered list of the elements in the right part of the header.
+
+    Defaults to `[ CoreApp.C.Component.EDIT_SWITCH, CoreApp.C.Component.LANG_SELECT, CoreApp.C.Component.USER_BUTTON, CoreApp.C.Component.MENU_BUTTON ]`.
 
 - `routePrefix`
 
