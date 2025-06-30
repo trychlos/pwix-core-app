@@ -6,6 +6,11 @@ CoreApp.i18n = {
     ... CoreApp.i18n,
     ... {
         en: {
+            app: {
+                default: {
+                    title: 'Default Application Title (you may consider setting an actual title in your environment settings).'
+                }
+            },
             cookieslink: {
                 label: 'Cookies management policy',
                 title: 'Cookies management policy'
@@ -35,6 +40,9 @@ CoreApp.i18n = {
             legalslink: {
                 label: 'Legals Informations',
                 title: 'Legals Informations'
+            },
+            powered_by: {
+                label: 'Powered by Meteor&trade;'
             },
             yesno: {
                 no_short: 'No',

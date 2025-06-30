@@ -6,6 +6,11 @@ CoreApp.i18n = {
     ... CoreApp.i18n,
     ... {
         fr: {
+            app: {
+                default: {
+                    title: 'Titre de l\'application (peut-être devriez-vous considérer la configuration d\'un titre dans les paramètres de l\'environnment).'
+                }
+            },
             cookieslink: {
                 label: 'Politique de gestion des cookies',
                 title: 'Politique de gestion des cookies'
@@ -35,6 +40,9 @@ CoreApp.i18n = {
             legalslink: {
                 label: 'Mentions légales',
                 title: 'Mentions légales'
+            },
+            powered_by: {
+                label: 'Propulsé par Meteor&trade;'
             },
             yesno: {
                 no_short: 'Non',
