@@ -29,6 +29,7 @@ body {
     display: flex;
     flex-direction: column;
     .core-app-content {
+        height: 100%;
         flex-grow: 1;
         overflow: auto;
     }
@@ -113,12 +114,19 @@ body {
                 text-decoration: none;
                 color: inherit;
             }
-            a img {
-                width: 1.75em;
+            .core-site-logo {
+                img {
+                    width: 2em;
+                }
             }
-            a p {
+            .core-site-name,
+            .core-site-env {
                 margin-left: 0.5em;
                 font-weight: bold;
+                font-size: 125%;
+            }
+            .core-site-env {
+                font-style: italic;
             }
         }
         .core-app-header-right {
@@ -135,7 +143,6 @@ body {
 
 .t-default-layout {
     .core-app-content {
-        height: 100%;
         .c-app-preamble {
             height: 100%;
             display: flex;
@@ -178,22 +185,56 @@ body {
     }
 }
 
-.t-default-layout {
-    // a responsive padding left and right
-    .app-hpad5 {
-        padding-left: 0.25em;
-        padding-right: 0.25em;
-        @media screen and ( min-width: @ui-sm-width ){
-            margin-left: 1em;
-            margin-right: 1em;
-        }
-        @media screen and ( min-width: @ui-md-width ){
-            margin-left: 2.5em;
-            margin-right: 2.5em;
-        }
-        @media screen and ( min-width: @ui-lg-width ){
-            margin-left: 5em;
-            margin-right:5em;
-        }
+// a responsive padding left and right
+.app-hpad5 {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    @media screen and ( min-width: @ui-sm-width ){
+        margin-left: 1em;
+        margin-right: 1em;
     }
+    @media screen and ( min-width: @ui-md-width ){
+        margin-left: 2.5em;
+        margin-right: 2.5em;
+    }
+    @media screen and ( min-width: @ui-lg-width ){
+        margin-left: 5em;
+        margin-right:5em;
+    }
+}
+
+// a responsive padding left and right
+.app-hpad10 {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    @media screen and ( min-width: @ui-sm-width ){
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+    @media screen and ( min-width: @ui-md-width ){
+        margin-left: 5em;
+        margin-right: 5em;
+    }
+    @media screen and ( min-width: @ui-lg-width ){
+        margin-left: 10em;
+        margin-right:10em;
+    }
+    @media screen and ( min-width: @ui-xl-width ){
+        margin-left: 20em;
+        margin-right: 20em;
+    }
+}
+
+// horizontally center in the screen the inner element
+.app-hcenter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+// vertically center in the screen the inner element
+.app-vcenter {
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
