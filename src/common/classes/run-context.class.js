@@ -15,6 +15,7 @@ import { strict as assert } from 'node:assert';
 
 import { AppPages } from 'meteor/pwix:app-pages';
 import { EnvSettings } from 'meteor/pwix:env-settings';
+import { Tracker } from 'meteor/tracker';
 
 export class RunContext extends AppPages.RunContext {
 
@@ -41,12 +42,14 @@ export class RunContext extends AppPages.RunContext {
     /*
      * computed at runtime
      */
-    // the content of right part of the header
-    #rightHeader = new ReactiveVar( CoreApp.configure().rightHeader );
+    // the content of the left part of the header
+    #leftHeader = new ReactiveVar( CoreApp.configure().leftHeader, _.isEqual );
+    // the content of the right part of the header
+    #rightHeader = new ReactiveVar( CoreApp.configure().rightHeader, _.isEqual );
     // the current displayed template and its data
-    #template = new ReactiveVar({ template: null, data: null });
+    #template = new ReactiveVar({ template: null, data: null }, _.isEqual );
     // the current tenant entity and validity period
-    #tenant = new ReactiveVar({ entity: null, record: null });
+    #tenant = new ReactiveVar({ entity: null, record: null }, _.isEqual );
 
     // private methods
 
@@ -69,7 +72,7 @@ export class RunContext extends AppPages.RunContext {
                         if( settings ){
                             self.contact( settings.contact || 'AppContact <no-reply@localhost' );
                             self.label( settings.label || self.name());
-                            self.logo( settings.logo || '/favicon.svg' );
+                            self.logo( settings.logo || '/packages/pwix_core-app/resources/favicon.svg' );
                             self.sender( settings.sender || 'AppSender <no-reply@localhost' );
                             self.title( settings.title || self.name());
                         }
@@ -77,9 +80,19 @@ export class RunContext extends AppPages.RunContext {
             }
         });
 
+        // trackt the current right header
+        Tracker.autorun(() => {
+            console.debug( 'pwix:core-app RunContext->rightHeader()', self.rightHeader());
+        });
+
         // trackt the current template and its data
         Tracker.autorun(() => {
-            console.debug( 'RunContext->template()', self.template());
+            console.debug( 'pwix:core-app RunContext->template()', self.template());
+        });
+
+        // trackt the current tenant
+        Tracker.autorun(() => {
+            console.debug( 'pwix:core-app RunContext->tenant()', self.tenant());
         });
 
         return this;
@@ -135,7 +148,21 @@ export class RunContext extends AppPages.RunContext {
     /**
      * Getter/Setter
      * @locus Anywhere
-     * @returns {String} the emails sender email address, read from environment settings
+     * @returns {Array<String>} the configured left part of the header
+     *  A reactive data souce
+     */
+    leftHeader( array ){
+        if( typeof array !== 'undefined' ){
+            assert( array && _.isArray( array ), 'expect an array, got '+array );
+            this.#leftHeader.set( array );
+        }
+        return this.#leftHeader.get();
+    }
+
+    /**
+     * Getter/Setter
+     * @locus Anywhere
+     * @returns {Array<String>} the configured right part of the header
      *  A reactive data souce
      */
     rightHeader( array ){

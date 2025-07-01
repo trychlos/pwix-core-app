@@ -1,0 +1,39 @@
+<template name="coreAppHeader">
+    <div class="core-app-header">
+
+        <div class="core-app-header-left">
+            <a href="/">
+                    {{> coreSiteLogo }}
+                <p class="core-app-title">{{{ title }}}</p>
+            </a>
+            <div class="ui-ml1"></div>
+            <!--
+            {{> organization_header }}
+            -->
+        </div>
+
+        <div class="core-app-header-middle">
+            <div class="ui-ml1"></div>
+        </div>
+
+        <div class="core-app-header-right">
+            <div class="{{ display it="EDIT_SWITCH" }}">
+                <div class="ui-ml05"></div>
+                {{> AppPagesEditButton (parmsEditButton) }}
+            </div>
+            <div class="{{ display it="LANG_SELECT" }}">
+                <div class="ui-ml05"></div>
+                {{> piLanguageSelector (parmsLanguageSelector) }}
+            </div>
+            <div class="{{ display it="USER_BUTTON" }}">
+                <div class="ui-ml05"></div>
+                {{> acUserLogin (parmsUserLogin) }}
+            </div>
+            <div class="{{ display it="MENU_BUTTON" }}">
+                <div class="ui-ml05"></div>
+                {{> coreAppMenuButton (parmsAppMenu) }}
+            </div>
+        </div>
+
+    </div>
+</template>

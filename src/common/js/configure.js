@@ -11,7 +11,12 @@ CoreApp._conf = new ReactiveVar( _conf );
 
 CoreApp._defaults = {
     appName: null,
-    adminRole: 'APP_ADMINISTRATOR',
+    colorTheme: 't-default-color',
+    homeTemplate: 'coreAppHome',
+    layoutTheme: 't-default-layout',
+    leftHeader: [ CoreApp.C.Component.APP_LOGO, CoreApp.C.Component.APP_NAME, CoreApp.C.Component.APP_ENV, CoreApp.C.Component.TENANT_SELECT ],
+    rightHeader: [ CoreApp.C.Component.EDIT_SWITCH, CoreApp.C.Component.LANG_SELECT, CoreApp.C.Component.USER_BUTTON, CoreApp.C.Component.MENU_BUTTON ],
+    mainMenu: 'coreAppMenu',
     routePrefix: '/coreApp',
     verbosity: CoreApp.C.Verbose.CONFIGURE
 };
@@ -27,10 +32,7 @@ CoreApp.configure = function( o ){
         _conf = _.merge( CoreApp._defaults, _conf, o );
         CoreApp._conf.set( _conf );
         // be verbose if asked for
-        if( _conf.verbosity & CoreApp.C.Verbose.CONFIGURE ){
-            //console.log( 'pwix:core-app configure() with', o, 'building', CoreApp._conf );
-            console.log( 'pwix:core-app configure() with', o );
-        }
+        _verbose( CoreApp.C.Verbose.CONFIGURE, 'configure() with', o );
     }
     // also acts as a getter
     return CoreApp._conf.get();

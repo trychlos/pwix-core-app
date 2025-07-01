@@ -34,7 +34,7 @@ Tracker.autorun(() => {
                     name: name,
                     action(){
                         // as the usual rule, users which are not allowed to a page are redirected to home which is expected to be public
-                        // in izIAM, the app_login component manages a login panel to force the user to connect
+                        // in izIAM, the coreLogin component manages a login panel to force the user to connect
                         //  so let the code go until coreAppContent
                         const contentManaged = true;
                         // make sure the current user is allowed (or that the login is managed at coreAppContent level)

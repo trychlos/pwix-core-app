@@ -180,7 +180,7 @@ Known configuration options are:
 
     Defaults to `coreAppMenu`.
 
-- `rightHeaderOrder`
+- `rightHeader`
 
     Defines the ordered list of the elements in the right part of the header.
 
