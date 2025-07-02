@@ -31,7 +31,7 @@ Template.coreLogin.helpers({
             signupLink: false,
             signinTextOne: pwixI18n.label( I18N, 'accounts.login.preamble' ),
             resetLink: false,
-            name: 'core-app:core-app-login'
+            name: 'MyApplication:core-app:core-login:user-login'
         };
     }
 });

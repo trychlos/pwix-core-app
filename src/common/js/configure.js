@@ -14,8 +14,6 @@ CoreApp._defaults = {
     colorTheme: 't-default-color',
     homeTemplate: 'coreAppHome',
     layoutTheme: 't-default-layout',
-    leftHeader: [ CoreApp.C.Component.APP_LOGO, CoreApp.C.Component.APP_NAME, CoreApp.C.Component.APP_ENV, CoreApp.C.Component.TENANT_SELECT ],
-    rightHeader: [ CoreApp.C.Component.EDIT_SWITCH, CoreApp.C.Component.LANG_SELECT, CoreApp.C.Component.USER_BUTTON, CoreApp.C.Component.MENU_BUTTON ],
     mainMenu: 'coreAppMenu',
     routePrefix: '/coreApp',
     verbosity: CoreApp.C.Verbose.CONFIGURE

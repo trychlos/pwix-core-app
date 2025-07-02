@@ -97,7 +97,7 @@ Template.coreAppHeader.helpers({
         return {
             name: 'MyApplication:core-app:core-app-header:user-login',
             initialDisplay: AccountsUI.C.Display.DROPDOWNBUTTON,
-            loggedItemsAfter: Meteor.APP.AccountsUI.loggedItemsAfter(),
+            loggedItemsAfter: CoreApp.AccountsUI.loggedItemsAfter(),
             //mdClassesContent: Meteor.APP.runContext.pageUIClasses().join( ' ' ),
         };
     },

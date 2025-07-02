@@ -11,8 +11,10 @@ import './constants.js';
 import './configure.js';
 import './trace.js';
 //
+import './accounts-ui.js';
 import './app.js';
 import './display-unit-defs.js';
 import './i18n.js';
+import './permissions.js';
 
 CoreApp.YesNo = YesNo;

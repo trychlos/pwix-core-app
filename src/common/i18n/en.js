@@ -38,6 +38,12 @@ CoreApp.i18n = {
                 label: 'General Terms of Use',
                 title: 'General Terms of Use'
             },
+            header: {
+                menu: {
+                    managers: 'Managers'
+                },
+                my_roles: 'My roles'
+            },
             legalslink: {
                 label: 'Legals Informations',
                 title: 'Legals Informations'

@@ -1,0 +1,25 @@
+<template name="coreAppFooter">
+    <div class="core-app-footer">
+
+        <div class="core-app-footer-left">
+            <!--
+            {{> coreSiteCopyright }}
+            -->
+            {{> corePoweredBy }}
+        </div>
+
+        <div class="core-app-footer-middle">
+            <div class="ui-ml1"></div>
+            {{> cmManagerLink }}
+        </div>
+
+        <div class="core-app-footer-right">
+            <div class="ui-ml1"></div>
+            {{> coreLegalsLink (parmsLegals) }}
+            {{> coreGTULink (parmsGTU) }}
+            {{> coreCookiesLink (parmsCookies) }}
+            {{> coreGDPRLink (parmsGDPR) }}
+        </div>
+
+    </div>
+</template>

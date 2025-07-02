@@ -8,13 +8,10 @@
 
     - Remove date.js and other obsolete code from this package
     - Actually check NPMs at startup
-    - Add pwix:i18n missing dependency
+    - Update dependencies
     - Fix configuration overrides
-    - Define new wantLanguageSwitch() RunContext method, thus bumping minor candidate version number
-    - RunContext instance is now a singleton
-    - Introduce new IAppI18n interface and iAppI18nWantSwitch() method replacing wantLanguageSwitch()
-    - Extend pwix:env-settings with environmentSettings() async function
-    - Meteor.APP.name() is now a function which returns the pwix:core-app configured application name
+    - Obsolete Meteor.APP.name in favor of Meteor.APP.runContext.name() and defines other RunContext helpers
+    - Define core display components
 
 ### 1.0.0
 

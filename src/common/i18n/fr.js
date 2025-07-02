@@ -38,6 +38,12 @@ CoreApp.i18n = {
                 label: 'Conditions Générales d\'Utilisation',
                 title: 'Conditions Générales d\'Utilisation'
             },
+            header: {
+                menu: {
+                    managers: 'Managers'
+                },
+                my_roles: 'Mes rôles'
+            },
             legalslink: {
                 label: 'Mentions légales',
                 title: 'Mentions légales'

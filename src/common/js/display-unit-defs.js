@@ -1,5 +1,5 @@
 /*
- * pwix:core-app/src/common/js/display-units.js
+ * pwix:core-app/src/common/js/display-unit-defs.js
  * 
  * DisplayUnit's are defined in common code to be scanned for reserved words.
  * They are nonetheless instanciated in client side only.
@@ -53,6 +53,14 @@ AppPages.displayUnitDefs = {
             },
             route: '/lm.legals',
             wantEditionSwitch: true
+        },
+        managers: {
+            template: 'coreManagersPage',
+            route: '/managers',
+            inMenus: [ CoreApp.configure().mainMenu ],
+            menuLabel: 'header.menu.managers',
+            wantEditionSwitch: true,
+            wantPermission: 'pwix.core_app.menus.managers'
         }
     }
 };

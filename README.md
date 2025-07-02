@@ -180,12 +180,6 @@ Known configuration options are:
 
     Defaults to `coreAppMenu`.
 
-- `rightHeader`
-
-    Defines the ordered list of the elements in the right part of the header.
-
-    Defaults to `[ CoreApp.C.Component.EDIT_SWITCH, CoreApp.C.Component.LANG_SELECT, CoreApp.C.Component.USER_BUTTON, CoreApp.C.Component.MENU_BUTTON ]`.
-
 - `routePrefix`
 
     Defines the prefix of the routes to be used in provided links.

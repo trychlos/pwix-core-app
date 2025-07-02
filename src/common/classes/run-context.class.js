@@ -42,10 +42,8 @@ export class RunContext extends AppPages.RunContext {
     /*
      * computed at runtime
      */
-    // the content of the left part of the header
-    #leftHeader = new ReactiveVar( CoreApp.configure().leftHeader, _.isEqual );
     // the content of the right part of the header
-    #rightHeader = new ReactiveVar( CoreApp.configure().rightHeader, _.isEqual );
+    #rightHeader = new ReactiveVar( CoreApp.C.RightHeader, _.isEqual );
     // the current displayed template and its data
     #template = new ReactiveVar({ template: null, data: null }, _.isEqual );
     // the current tenant entity and validity period
@@ -143,20 +141,6 @@ export class RunContext extends AppPages.RunContext {
      */
     name(){
         return CoreApp.configure().appName;
-    }
-
-    /**
-     * Getter/Setter
-     * @locus Anywhere
-     * @returns {Array<String>} the configured left part of the header
-     *  A reactive data souce
-     */
-    leftHeader( array ){
-        if( typeof array !== 'undefined' ){
-            assert( array && _.isArray( array ), 'expect an array, got '+array );
-            this.#leftHeader.set( array );
-        }
-        return this.#leftHeader.get();
     }
 
     /**
