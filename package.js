@@ -56,6 +56,7 @@ function configure( api ){
         'src/client/components/coreAppHeader/coreAppHeader.js',
         'src/client/components/coreAppHome/coreAppHome.js',
         'src/client/components/coreAppLayout/coreAppLayout.js',
+        'src/client/components/coreAppLegals/coreAppLegals.js',
         'src/client/components/coreAppMain/coreAppMain.js',
         'src/client/components/coreAppMenuButton/coreAppMenuButton.js',
         'src/client/components/coreCookiesLink/coreCookiesLink.js',

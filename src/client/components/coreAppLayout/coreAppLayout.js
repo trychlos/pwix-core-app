@@ -97,21 +97,21 @@ Template.coreAppLayout.onRendered( function(){
                     const tenant = Meteor.APP.runContext.tenant();
                     if( wantScope ){
                         if( tenant.entity?._id ){
-                            Meteor.APP.runContext.template( page.get( 'template' ));
+                            Meteor.APP.runContext.template( page.get( 'template' ), page.get( 'templateParms' ));
                         } else {
                             // want scope
                             console.warn( 'the page requires a scope, but none is currently set, back to home' );
                             FlowRouter.go( '/' );
                         }
                     } else {
-                        Meteor.APP.runContext.template( page.get( 'template' ));
+                        Meteor.APP.runContext.template( page.get( 'template' ), page.get( 'templateParms' ));
                     }
                 } else {
                     // the asked page wants an identified user, but nobody is connected -> force a login page
                     Meteor.APP.runContext.template( 'coreLogin' );
                 }
             } else {
-                Meteor.APP.runContext.template( page.get( 'template' ));
+                Meteor.APP.runContext.template( page.get( 'template' ), page.get( 'templateParms' ));
             }
         }
     });

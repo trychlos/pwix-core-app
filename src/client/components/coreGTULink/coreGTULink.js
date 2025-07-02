@@ -22,7 +22,7 @@ Template.coreGTULink.helpers({
     route(){
         const page = this.page || 'lm_gtu';
         const unit = page ? Meteor.APP.displaySet.byName( page ) : null;
-        const route = unit ? (( CoreApp.configure().routePrefix || '' )+'/'+unit.get( 'route' )).replace( /\/+/g, '/' ) : '';
+        const route = unit ? unit.get( 'route' ) : '';
         return route;
     },
 

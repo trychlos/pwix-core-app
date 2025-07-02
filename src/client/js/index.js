@@ -5,5 +5,4 @@
 import '../../common/js/index.js';
 
 // our functions
-import './DOM.js';
 import './routes.js';

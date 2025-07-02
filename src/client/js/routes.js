@@ -21,14 +21,14 @@ import '../components/coreAppMain/coreAppMain.js';
 // WITH OLDER FlowRouter AND Meteor RELEASES
 FlowRouter.decodeQueryParamsOnce = true;
 
-// the main routes to the pages
+// define the routes to the pages
 Tracker.autorun(() => {
     const displaySet = AppPages.displaySet.get();
     if( displaySet ){
         assert( displaySet instanceof AppPages.DisplaySet, 'expects a DisplaySet, got '+displaySet );
         console.debug( 'pwix:core-app got displaySet', displaySet );
-        displaySet.enumerate(( name, page ) => {
-            const route = page.get( 'route' );
+        displaySet.enumerate(( name, unit ) => {
+            const route = unit.get( 'route' );
             if( route ){
                 FlowRouter.route( route, {
                     name: name,
@@ -38,7 +38,6 @@ Tracker.autorun(() => {
                         //  so let the code go until coreAppContent
                         const contentManaged = true;
                         // make sure the current user is allowed (or that the login is managed at coreAppContent level)
-                        const unit = displaySet.byName( name );
                         const wantPermission = unit.get( 'wantPermission' );
                         Promise.resolve( !wantPermission || Permissions.isAllowed( wantPermission )).then(( allowed ) => {
                             if( allowed || contentManaged ){

@@ -24,7 +24,7 @@ AppPages.displayUnitDefs = {
                 collection: 'legals',
                 document: 'cookies-policy-231001'
             },
-            route: '/lm.cookies',
+            route: (( CoreApp.configure().routePrefix || '' )+'/lm.cookies' ).replace( /\/+/g, '/' ),
             wantEditionSwitch: true
         },
         lm_gdpr: {
@@ -33,7 +33,7 @@ AppPages.displayUnitDefs = {
                 collection: 'legals',
                 document: 'gdpr-231001'
             },
-            route: '/lm.gdpr',
+            route: (( CoreApp.configure().routePrefix || '' )+'/lm.gdpr' ).replace( /\/+/g, '/' ),
             wantEditionSwitch: true
         },
         lm_gtu: {
@@ -42,7 +42,7 @@ AppPages.displayUnitDefs = {
                 collection: 'legals',
                 document: 'gtu-231001'
             },
-            route: '/lm.gtu',
+            route: (( CoreApp.configure().routePrefix || '' )+'/lm.gtu' ).replace( /\/+/g, '/' ),
             wantEditionSwitch: true
         },
         lm_legals: {
@@ -51,12 +51,13 @@ AppPages.displayUnitDefs = {
                 collection: 'legals',
                 document: 'legals-231001'
             },
-            route: '/lm.legals',
+            route: (( CoreApp.configure().routePrefix || '' )+'/lm.legals' ).replace( /\/+/g, '/' ),
             wantEditionSwitch: true
         },
         managers: {
             template: 'coreManagersPage',
             route: '/managers',
+            route: (( CoreApp.configure().routePrefix || '' )+'/managers' ).replace( /\/+/g, '/' ),
             inMenus: [ CoreApp.configure().mainMenu ],
             menuLabel: 'header.menu.managers',
             wantEditionSwitch: true,
