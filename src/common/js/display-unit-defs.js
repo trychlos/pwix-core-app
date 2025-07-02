@@ -15,7 +15,7 @@ AppPages.displayUnitDefs = {
     ... {
         home: {
             route: '/',
-            template: CoreApp.configure().homeTemplate,
+            template: 'coreAppHome',
             wantEditionSwitch: true
         },
         lm_cookies: {

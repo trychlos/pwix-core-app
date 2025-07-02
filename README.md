@@ -157,17 +157,27 @@ Known configuration options are:
 
     Defines the name of the application role. By convention, this name is also a key in settings, and contain an `environments` object addressed by the `APP_ENV` environment variable on the server.
 
+    Should be considered as mandatory and many features rely on that.
+
+- `appCopyrightTemplate`
+
+    Defines the copyright to tbe displayed as an async function which returns a `{ template, data }` object. Prototype is so: `async fn(): Object{ template, data }`.
+
+    Defaults to local `local_copyright()` function which displays a 'PWI Consulting' copyright.
+
+- `appHomeTemplate`
+
+    Defines the (public) home page to be displayed as an async function which returns a `{ template, data }` object. Prototype is so: `async fn(): Object{ template, data }`.
+
+    Defaults to local `local_home_label()` function which displays the application name and label in the middle of the page.
+
+    Note that `pwix:core-app` also proposes a `local_home_inline()` function which displays an inline-edited document named `core-home-hero-01` from the default collection.
+
 - `colorTheme`
 
     Defines the default color class for the theme. This class is added to the `coreAppLayout` top component.
 
     Defaults to `t-default-color`.
-
-- `homeTemplate`
-
-    Defines the name of the template to be used to display the (public) home page.
-
-    Defaults to `coreAppHome`, which displays the label of the application in the middle of the page.
 
 - `layoutTheme`
 
@@ -186,12 +196,6 @@ Known configuration options are:
     Defines the prefix of the routes to be used in provided links.
 
     Defaults to `/coreApp`.
-
-- `siteCopyright`
-
-    Defines the copyright to tbe displayed as an async function which returns a `{ template, data }` object. Prototype is so: `async fn(): Object{ template, data }`.
-
-    Defaults to local `site_copyright()` function which displays a 'PWI Consulting' copyright.
 
 - `verbosity`
 

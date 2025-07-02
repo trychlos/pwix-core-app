@@ -143,6 +143,25 @@ body {
 
 .t-default-layout {
     .core-app-content {
+        .core-app-home {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            .section-hero {
+            }
+            .core-app-label {
+                font-size: 150%;
+                font-weight: bold;
+                font-style: italic;
+            }
+        }
+    }
+}
+
+.t-default-layout {
+    .core-app-content {
         .c-app-preamble {
             height: 100%;
             display: flex;
@@ -181,11 +200,6 @@ body {
         .core-app-page {
             padding: 0 0.5em;
             height: 100%;
-        }
-        .section-hero.core-app-label {
-            font-size: 150%;
-            font-weight: bold;
-            font-style: italic;
         }
     }
 }
@@ -230,14 +244,14 @@ body {
     }
 }
 
-// horizontally center in the screen the inner element
+// horizontally center in the screen the inner element(s)
 .app-hcenter {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-// vertically center in the screen the inner element
+// vertically center in the screen the inner element(s)
 .app-vcenter {
     height: 100%;
     display: flex;

@@ -1,13 +1,7 @@
 <template name="coreAppHome">
-    <div class="core-app-home app-hcenter app-vcenter app-hpad10">
+    <div class="core-app-home">
 
-        <div class="section section-hero">
-            {{> AppPagesEditSerializer document="home-page-hero-1" }}
-        </div>
-
-        <div class="section section-hero core-app-label">
-            {{ name }} : {{ label }}
-        </div>
+        {{> Template.dynamic template=(template) data=(data) }}
 
     </div>
 </template>

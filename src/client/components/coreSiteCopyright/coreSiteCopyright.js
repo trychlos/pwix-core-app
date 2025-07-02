@@ -7,7 +7,7 @@ import { strict as assert } from 'node:assert';
 
 import { ReactiveVar } from 'meteor/reactive-var';
 
-import '../site_copyright/site_copyright.js';
+import '../local_copyright/local_copyright.js';
 
 import './coreSiteCopyright.html';
 
@@ -15,13 +15,13 @@ Template.coreSiteCopyright.onCreated( function(){
     const self = this;
 
     self.PCK = {
-        // the { template, data } object returned by configured siteCopyright() function
+        // the { template, data } object returned by configured appCopyrightTemplate() function
         template: new ReactiveVar( null )
     };
 
     self.autorun(() => {
-        if( _.isFunction( CoreApp.configure().siteCopyright )){
-            CoreApp.configure().siteCopyright()
+        if( _.isFunction( CoreApp.configure().appCopyrightTemplate )){
+            CoreApp.configure().appCopyrightTemplate()
                 .then(( res ) => {
                     if( res && _.isObject( res ) && res.template ){
                         self.PCK.template.set( res );
@@ -30,7 +30,7 @@ Template.coreSiteCopyright.onCreated( function(){
                     }
                 });
         } else {
-            console.warn( 'expects \'siteCopyright\' be a function, got', CoreApp.configure().siteCopyright );
+            console.warn( 'expects \'appCopyrightTemplate\' be a function, got', CoreApp.configure().appCopyrightTemplate );
         }
     });
 });
