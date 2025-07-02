@@ -30,6 +30,8 @@ export class RunContext extends AppPages.RunContext {
      */
     // contact email address
     #contact = new ReactiveVar( null );
+    // copyright
+    #copyright = new ReactiveVar( null );
     // application label
     #label = new ReactiveVar( null );
     // logo path
@@ -69,6 +71,7 @@ export class RunContext extends AppPages.RunContext {
                     .then(( settings ) => {
                         if( settings ){
                             self.contact( settings.contact || 'AppContact <no-reply@localhost' );
+                            self.copyright( settings.copyright || '' );
                             self.label( settings.label || self.name());
                             self.logo( settings.logo || '/packages/pwix_core-app/resources/favicon.svg' );
                             self.sender( settings.sender || 'AppSender <no-reply@localhost' );
@@ -107,6 +110,19 @@ export class RunContext extends AppPages.RunContext {
             this.#contact.set( str );
         }
         return this.#contact.get();
+    }
+
+    /**
+     * Getter/Setter
+     * @locus Anywhere
+     * @returns {String} the application copyright, read from environment settings
+     *  A reactive data souce
+     */
+    copyright( str ){
+        if( typeof str !== 'undefined' ){
+            this.#copyright.set( str );
+        }
+        return this.#copyright.get();
     }
 
     /**

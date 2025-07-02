@@ -64,6 +64,7 @@ function configure( api ){
         'src/client/components/coreLegalsLink/coreLegalsLink.js',
         'src/client/components/corePoweredBy/corePoweredBy.js',
         'src/client/components/coreSaa/coreSaa.js',
+        'src/client/components/coreSiteCopyright/coreSiteCopyright.js',
         'src/client/components/coreSiteEnv/coreSiteEnv.js',
         'src/client/components/coreSiteLogo/coreSiteLogo.js',
         'src/client/components/coreSiteName/coreSiteName.js',
@@ -71,6 +72,7 @@ function configure( api ){
     ], 'client' );
     api.addAssets([
         'resources/favicon.svg',
+        'resources/pwi-consulting-footer-logo.png',
         'resources/startup-app-admin.svg'
      ], 'client' );
 }

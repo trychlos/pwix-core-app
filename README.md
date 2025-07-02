@@ -15,6 +15,7 @@ The `pwix:core-app` package provides a common framework to applications by gathe
     - to be setup in environment settings:
 
         - contact: a contact email address, defaulting to 'no-reply@localhost'
+        - copyright: a copyright string, defaulting to none
         - label: the label of the application, defaulting to the application name
         - logo: the path to the logo image, defaulting to '/packages/pwix_core-app/resources/favicon.svg'
         - sender: the sender address of all emails sent by the application, defaulting to 'no-reply@localhost'
@@ -185,6 +186,12 @@ Known configuration options are:
     Defines the prefix of the routes to be used in provided links.
 
     Defaults to `/coreApp`.
+
+- `siteCopyright`
+
+    Defines the copyright to tbe displayed as an async function which returns a `{ template, data }` object. Prototype is so: `async fn(): Object{ template, data }`.
+
+    Defaults to local `site_copyright()` function which displays a 'PWI Consulting' copyright.
 
 - `verbosity`
 

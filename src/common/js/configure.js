@@ -9,6 +9,13 @@ import { ReactiveVar } from 'meteor/reactive-var';
 let _conf = {};
 CoreApp._conf = new ReactiveVar( _conf );
 
+async function site_copyright(){
+    return {
+        template: 'site_copyright',
+        data: null
+    };
+}
+
 CoreApp._defaults = {
     appName: null,
     colorTheme: 't-default-color',
@@ -16,6 +23,7 @@ CoreApp._defaults = {
     layoutTheme: 't-default-layout',
     mainMenu: 'coreAppMenu',
     routePrefix: '/coreApp',
+    siteCopyright: site_copyright,
     verbosity: CoreApp.C.Verbose.CONFIGURE
 };
 
