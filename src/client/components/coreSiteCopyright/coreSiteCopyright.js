@@ -5,6 +5,8 @@
 import _ from 'lodash';
 import { strict as assert } from 'node:assert';
 
+import { ReactiveVar } from 'meteor/reactive-var';
+
 import '../site_copyright/site_copyright.js';
 
 import './coreSiteCopyright.html';

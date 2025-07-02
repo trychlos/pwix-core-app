@@ -72,6 +72,7 @@ function configure( api ){
     ], 'client' );
     api.addAssets([
         'resources/favicon.svg',
+        'resources/meteor.ico',
         'resources/pwi-consulting-footer-logo.png',
         'resources/startup-app-admin.svg'
      ], 'client' );

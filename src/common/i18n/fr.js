@@ -49,7 +49,7 @@ CoreApp.i18n = {
                 title: 'Mentions légales'
             },
             powered_by: {
-                label: 'Propulsé par Meteor&trade;'
+                label: 'Propulsé par <img src="/packages/pwix_core-app/resources/meteor.ico" alt="Meteor" title="Meteor" height="16px" width="16px" /> Meteor&trade;'
             },
             yesno: {
                 no_short: 'Non',
