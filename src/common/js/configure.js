@@ -37,7 +37,7 @@ CoreApp._defaults = {
     colorTheme: 't-default-color',
     layoutTheme: 't-default-layout',
     mainMenu: 'coreAppMenu',
-    routePrefix: '/core.app',
+    routePrefix: '/core-app',
     verbosity: CoreApp.C.Verbose.CONFIGURE
 };
 

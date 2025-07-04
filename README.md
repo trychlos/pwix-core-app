@@ -195,7 +195,7 @@ Known configuration options are:
 
     Defines the prefix of the routes to be used in provided links.
 
-    Defaults to `/core.app`.
+    Defaults to `/core-app`.
 
 - `verbosity`
 

@@ -34,7 +34,7 @@ Template.coreAppHeader.onCreated( function(){
 
         // helpers
         updateRightHeader( template ){
-            let header = CoreApp.configure().rightHeader;
+            let header = CoreApp.C.RightHeader;
             self.PCK.templates[template]?.forbidden.forEach(( it ) => {
                 const idx = header.indexOf( it );
                 if( idx > -1 ){

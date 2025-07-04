@@ -11,10 +11,12 @@ import './constants.js';
 import './configure.js';
 import './trace.js';
 //
+import './accounts-manager.js';
 import './accounts-ui.js';
 import './app.js';
 import './display-unit-defs.js';
 import './i18n.js';
 import './permissions.js';
+import './tenants-manager.js';
 
 CoreApp.YesNo = YesNo;

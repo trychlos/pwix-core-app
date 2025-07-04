@@ -1,0 +1,20 @@
+<template name="manager_accounts_tab">
+    <div class="core-manager-accounts-tab ui-h100">
+        <div class="core-tab-content ui-ml1 ui-h100">
+
+            {{#if canList }}
+                <div class="core-tab-header d-flex align-items-center justify-content-between">
+                    <div class="core-preamble">
+                        {{{ i18n key="manager.accounts.preamble" }}}
+                    </div>
+                    {{> AccountNewButton (parmsNewAccount) }}
+                </div>
+            {{/if}}
+
+            <div class="core-tab-body ui-mr1">
+                {{> AccountsList (parmsAccountsList) }}
+            </div>
+
+        </div>        
+    </div>
+</template>

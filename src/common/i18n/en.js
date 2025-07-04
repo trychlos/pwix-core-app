@@ -7,6 +7,11 @@ CoreApp.i18n = {
     ... {
         en: {
             accounts: {
+                edit: {
+                    api_allowed_label: 'Is REST API allowed: ',
+                    api_last_label: 'Last API connection: ',
+                    tab_title: 'Application'
+                },
                 login: {
                     preamble: 'The page you are requesting requires permissions which are only given to identified user accounts.<br />'
                         +'Please connect and enjoy.<br />'
@@ -47,6 +52,18 @@ CoreApp.i18n = {
             legalslink: {
                 label: 'Legals Informations',
                 title: 'Legals Informations'
+            },
+            manager: {
+                accounts: {
+                    preamble: 'Register and manage here the accounts allowed to connect to the application.',
+                    tab_title: 'Accounts Management'
+                },
+                tenants: {
+                    preamble: 'Register and manage here the involved tenants.<br />'
+                        +'Tenants can take advantage of validity periods.<br />'
+                        +'Do not omit to define at least one manager per tenant so that he/she can later be autonomous.<br />',
+                    tab_title: 'Tenants Management'
+                }
             },
             powered_by: {
                 label: 'Powered by <img src="/packages/pwix_core-app/resources/meteor.ico" alt="Meteor" title="Meteor" height="16px" width="16px" /> Meteor&trade;'

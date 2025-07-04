@@ -34,6 +34,8 @@ function configure( api ){
     _use( 'less@4.0.0', 'client' );
     _use( 'mongo@1.16.1 || 2.0.0-rc300.2' );
     _use( 'ostrio:flow-router-extra@3.10.0' );
+    _use( 'pwix:accounts-hub@1.0.0' );
+    _use( 'pwix:accounts-manager@2.0.0' );
     _use( 'pwix:app-pages@1.0.0' );
     _use( 'pwix:app-pages-edit@1.0.0-rc' );
     _use( 'pwix:app-pages-i18n@1.0.0-rc' );
@@ -44,6 +46,7 @@ function configure( api ){
     _use( 'pwix:modal@2.2.0' );
     _use( 'pwix:permissions@1.0.0' );
     _use( 'pwix:roles@1.2.0' );
+    _use( 'pwix:tenants-manager@1.0.0' );
     _use( 'pwix:ui-layout@2.0.0' );
     _use( 'reactive-dict' );
     _use( 'reactive-var' );
@@ -63,6 +66,7 @@ function configure( api ){
         'src/client/components/coreGDPRLink/coreGDPRLink.js',
         'src/client/components/coreGTULink/coreGTULink.js',
         'src/client/components/coreLegalsLink/coreLegalsLink.js',
+        'src/client/components/coreManagersPage/coreManagersPage.js',
         'src/client/components/corePoweredBy/corePoweredBy.js',
         'src/client/components/coreSaa/coreSaa.js',
         'src/client/components/coreSiteCopyright/coreSiteCopyright.js',

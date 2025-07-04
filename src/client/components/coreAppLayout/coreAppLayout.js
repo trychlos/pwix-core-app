@@ -31,6 +31,7 @@ Template.coreAppLayout.onCreated( function(){
         },
         tenants: {
             havePackage: new ReactiveVar( false ),
+            enabled: new ReactiveVar( false ),
             isPackageReady: new ReactiveVar( false ),
             wantDisplay: new ReactiveVar( false )
         }
@@ -46,6 +47,13 @@ Template.coreAppLayout.onCreated( function(){
     // as of pwix:core-app v1.x, pwix:tenants-manager is always included
     self.autorun(() => {
         self.PCK.tenants.havePackage.set( Package['pwix:tenants-manager'] !== undefined );
+    });
+
+    // whether the TenantsManager package is enabled ?
+    self.autorun(() => {
+        if( self.PCK.tenants.havePackage.get()){
+            self.PCK.tenants.enabled.set( Package['pwix:tenants-manager'].TenantsManager.configure().enabled );
+        }
     });
 });
 
@@ -63,14 +71,13 @@ Template.coreAppLayout.onRendered( function(){
         self.PCK.saa.wantDisplay.set( self.PCK.saa.isPackageReady.get() && Package['pwix:startup-app-admin'].SAA.countAdmins.get() === 0 );
     });
 
-    // if we have the TenantsManager package, is it ready ?
+    // if the TenantsManager package is enabled, is it ready ?
     // as of pwix:tenants-manager v1.x, the package is always considered as ready (there is no ready() function)
     self.autorun(() => {
-        //self.PCK.tenants.isPackageReady.set( self.PCK.tenants.havePackage.get() && Package['pwix:tenants-manager'].TenantsManager.ready());
-        self.PCK.tenants.isPackageReady.set( self.PCK.tenants.havePackage.get() && true );
+        self.PCK.tenants.isPackageReady.set( self.PCK.tenants.enabled.get() && true );
     });
 
-    // if we have the TenantsManager package (and it is ready), do we want display the tenant selector ?
+    // if the TenantsManager package is enabled and ready, do we want display the tenant selector ?
     self.autorun(() => {
         //self.PCK.saa.wantDisplay.set( self.PCK.saa.isPackageReady.get() && Package['pwix:startup-app-admin'].SAA.countAdmins.get() === 0 );
     });
