@@ -12,6 +12,8 @@
     - Fix configuration overrides
     - Obsolete Meteor.APP.name in favor of Meteor.APP.runContext.name() and defines other RunContext helpers
     - Define core display components
+    - Have an accounts manager
+    - Have a tenants manager
 
 ### 1.0.0
 

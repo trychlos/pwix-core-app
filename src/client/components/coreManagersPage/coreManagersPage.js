@@ -66,7 +66,7 @@ Template.coreManagersPage.helpers({
         if( Template.instance().PCK.tenants.allowed.get()){
             tabs.push({
                 navLabel: pwixI18n.label( I18N, 'manager.tenants.tab_title' ),
-                paneTemplate: 'manager_organizations_tab'
+                paneTemplate: 'manager_tenants_tab'
             });
         }
         console.debug( 'tabs', tabs );
