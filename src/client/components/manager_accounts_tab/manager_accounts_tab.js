@@ -13,8 +13,6 @@ import { PlusButton } from 'meteor/pwix:plus-button';
 import { pwixI18n } from 'meteor/pwix:i18n';
 import { ReactiveVar } from 'meteor/reactive-var';
 
-import '../account_edit_pane/account_edit_pane.js';
-
 import './manager_accounts_tab.html';
 
 Template.manager_accounts_tab.onCreated( function(){
@@ -22,17 +20,7 @@ Template.manager_accounts_tab.onCreated( function(){
 
     self.PCK = {
         // whether the current user has the permission to see the list of accounts
-        allowed: new ReactiveVar( false ),
-
-        // the edit/new panel tabs
-        tabs: [
-            {
-                tabid: 'app_account_tab',
-                paneid: 'app_account_pane',
-                navLabel: pwixI18n.label( I18N, 'accounts.edit.tab_title' ),
-                paneTemplate: 'account_edit_pane'
-            }
-        ]
+        allowed: new ReactiveVar( false )
     };
 
     // whether the current user has the permission to see the list of accounts
@@ -58,8 +46,7 @@ Template.manager_accounts_tab.helpers({
     // AccountsList parameters and its additional tabs
     parmsAccountsList(){
         return {
-            name: 'users',
-            tabs: Template.instance().PCK.tabs
+            name: 'users'
         };
     },
 
@@ -67,7 +54,6 @@ Template.manager_accounts_tab.helpers({
     parmsNewAccount(){
         return {
             name: 'users',
-            tabs: Template.instance().PCK.tabs,
             shape: PlusButton.C.Shape.RECTANGLE
         }
     }

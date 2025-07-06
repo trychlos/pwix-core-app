@@ -7,11 +7,6 @@ CoreApp.i18n = {
     ... {
         en: {
             accounts: {
-                edit: {
-                    api_allowed_label: 'Is REST API allowed: ',
-                    api_last_label: 'Last API connection: ',
-                    tab_title: 'Application'
-                },
                 login: {
                     preamble: 'The page you are requesting requires permissions which are only given to identified user accounts.<br />'
                         +'Please connect and enjoy.<br />'
