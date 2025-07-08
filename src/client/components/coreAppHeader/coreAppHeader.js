@@ -76,6 +76,12 @@ Template.coreAppHeader.helpers({
         return visible ? 'ui-diblock' : 'ui-dnone';
     },
 
+    // whether we have to display a language selector ?
+    haveLanguageSelector(){
+        const managedLanguages = CoreApp.configure().managedLanguages;
+        return managedLanguages && _.isArray( managedLanguages ) && managedLanguages.length > 1;
+    },
+
     // coreAppMenuButton data context
     parmsAppMenu(){
     },
@@ -87,7 +93,7 @@ Template.coreAppHeader.helpers({
     // piLanguageSelector data context
     parmsLanguageSelector(){
         return {
-            languages: Meteor.APP.C.managedLanguages,
+            languages: CoreApp.configure().managedLanguages,
             buttonLabel: pwixI18n.C.BtnLabel.LEFT
         };
     },

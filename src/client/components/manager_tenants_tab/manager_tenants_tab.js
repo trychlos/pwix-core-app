@@ -32,7 +32,6 @@ Template.manager_tenants_tab.helpers({
     // whether the current user has the permission to see the list of tenants
     canList(){
         const allowed = Template.instance().PCK.allowed.get();
-        console.debug( 'allowed', allowed );
         return allowed;
     },
 
@@ -45,23 +44,15 @@ Template.manager_tenants_tab.helpers({
     // disable the clients and accounts tabs for new tenant
     parmsTenantNew(){
         return {
-            entityTabs: Template.instance().PCK.entityTabsNew,
-            entityTabsAfter: Template.instance().PCK.entityTabsAfterNew,
-            recordTabsBefore: Template.instance().PCK.recordTabsBefore,
-            recordTabs: Template.instance().PCK.recordTabs,
             shape: PlusButton.C.Shape.RECTANGLE,
             mdClasses: 'modal-xxl'
-        }
+        };
     },
 
     // TenantsList parameters
     parmsTenantsList(){
         return {
-            entityTabs: Template.instance().PCK.entityTabsEdit,
-            entityTabsAfter: Template.instance().PCK.entityTabsAfterEdit,
-            recordTabsBefore: Template.instance().PCK.recordTabsBefore,
-            recordTabs: Template.instance().PCK.recordTabs,
             mdClasses: 'modal-xxl'
-        }
+        };
     }
 });

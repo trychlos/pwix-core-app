@@ -22,10 +22,12 @@
                 <div class="ui-ml05"></div>
                 {{> AppPagesEditButton (parmsEditButton) }}
             </div>
-            <div class="{{ display it="LANG_SELECT" }}">
-                <div class="ui-ml05"></div>
-                {{> piLanguageSelector (parmsLanguageSelector) }}
-            </div>
+            {{#if haveLanguageSelector }}
+                <div class="{{ display it="LANG_SELECT" }}">
+                    <div class="ui-ml05"></div>
+                    {{> piLanguageSelector (parmsLanguageSelector) }}
+                </div>
+            {{/if}}
             <div class="{{ display it="USER_BUTTON" }}">
                 <div class="ui-ml05"></div>
                 {{> acUserLogin (parmsUserLogin) }}

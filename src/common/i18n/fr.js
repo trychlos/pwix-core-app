@@ -53,6 +53,10 @@ CoreApp.i18n = {
                     preamble: 'Définissez et organisez ici les comptes des utilisateurs autorisés à se connecter à l\'application.',
                     tab_title: 'Gestion des comptes'
                 },
+                contents: {
+                    preamble: 'Vous avez accès ici au catalogue des contenus éditables en ligne.',
+                    tab_title: 'Gestion des contenus'
+                },
                 tenants: {
                     preamble: 'Définissez et organisez ici les tenants gérés par l\'application.<br />'
                         +'Les tenants peuvent utiliser plusieurs périodes de validité si nécessaire.<br />'

@@ -7,7 +7,7 @@ import { strict as assert } from 'node:assert';
 
 import { AccountsUI } from 'meteor/pwix:accounts-ui';
 import { pwixI18n } from 'meteor/pwix:i18n';
-import { UIU } from 'meteor/pwix:ui-utils';
+import { UIUtils } from 'meteor/pwix:ui-utils';
 
 import './coreLogin.html';
 
@@ -16,7 +16,7 @@ Template.coreLogin.onRendered( function(){
 
     // when the user must log in, the acUserLogin doesn't take the focus
     //  this works (i.e. resolves with the INPUT element, but doesn't gain the focus either)
-    UIU.DOM.waitFor( '.core-app-content .acUserLogin input' )
+    UIUtils.DOM.waitFor( '.core-app-content .acUserLogin input' )
         .then(( res ) => { self.$( res ).focus(); });
 });
 

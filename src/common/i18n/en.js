@@ -53,6 +53,10 @@ CoreApp.i18n = {
                     preamble: 'Register and manage here the accounts allowed to connect to the application.',
                     tab_title: 'Accounts Management'
                 },
+                contents: {
+                    preamble: 'You get here a catalog of the registered inline-editable documents.',
+                    tab_title: 'Contents Management'
+                },
                 tenants: {
                     preamble: 'Register and manage here the involved tenants.<br />'
                         +'Tenants can take advantage of validity periods.<br />'

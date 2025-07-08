@@ -14,6 +14,7 @@
     - Define core display components
     - Have an accounts manager
     - Have a tenants manager
+    - Have a contents manager
 
 ### 1.0.0
 

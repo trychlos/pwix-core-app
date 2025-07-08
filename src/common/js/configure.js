@@ -35,8 +35,10 @@ CoreApp._defaults = {
     appCopyrightTemplate: local_copyright,
     appHomeTemplate: local_home_label,
     colorTheme: 't-default-color',
+    haveContentsManager: false,
     layoutTheme: 't-default-layout',
     mainMenu: 'coreAppMenu',
+    managedLanguages: null,
     routePrefix: '/core-app',
     verbosity: CoreApp.C.Verbose.CONFIGURE
 };

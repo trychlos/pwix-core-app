@@ -1,0 +1,19 @@
+<template name="manager_contents_tab">
+    <div class="core-manager-contents-tab ui-h100">
+        <div class="core-tab-content ui-ml1 ui-h100">
+
+            {{#if canList }}
+                <div class="core-tab-header d-flex align-items-center justify-content-between">
+                    <div class="core-preamble">
+                        {{{ i18n key="manager.contents.preamble" }}}
+                    </div>
+                </div>
+
+                <div class="core-tab-body ui-mr1">
+                    {{> AppPagesEditList (parmsList) }}
+                </div>
+            {{/if}}
+
+        </div>        
+    </div>
+</template>

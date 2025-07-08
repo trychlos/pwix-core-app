@@ -29,6 +29,10 @@ Permissions.set({
                 }
             },
             pub: {
+                // whether to get the closest data
+                async closests( userId ){
+                    return await Roles.userIsInRoles( Meteor.userId(), 'TENANTS_MANAGER', { anyScope: true });
+                },
                 // whether to get the known scopes
                 async known_scopes( userId ){
                     return await Roles.userIsInRoles( Meteor.userId(), 'TENANTS_MANAGER', { anyScope: true });

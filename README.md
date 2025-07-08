@@ -179,6 +179,12 @@ Known configuration options are:
 
     Defaults to `t-default-color`.
 
+- `haveContentsManager`
+
+    Whether the 'Managers' page has a 'Contents Manager' tab.
+
+    Defaults to `false`.
+
 - `layoutTheme`
 
     Defines the default layout class for the theme. This class is added to the `coreAppLayout` top component.
@@ -190,6 +196,12 @@ Known configuration options are:
     Defines the name of the main menu displayed in the header of the pages.
 
     Defaults to `coreAppMenu`.
+
+- `managedLanguages`
+
+    Defines the list of languages managed by the application.
+
+    Defaults to none.
 
 - `routePrefix`
 

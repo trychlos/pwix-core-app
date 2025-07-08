@@ -48,6 +48,7 @@ function configure( api ){
     _use( 'pwix:roles@1.2.0' );
     _use( 'pwix:tenants-manager@1.0.0' );
     _use( 'pwix:ui-layout@2.0.0' );
+    _use( 'pwix:ui-utils@1.4.0' );
     _use( 'reactive-dict' );
     _use( 'reactive-var' );
     _use( 'tmeasday:check-npm-versions@1.0.2 || 2.0.0-beta.0', 'server' );
