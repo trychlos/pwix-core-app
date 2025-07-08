@@ -29,22 +29,23 @@ Tracker.autorun(() => {
         console.debug( 'pwix:core-app got displaySet', displaySet );
         displaySet.enumerate(( name, unit ) => {
             const route = unit.get( 'route' );
+            //console.debug( 'defining route', route );
             if( route ){
                 FlowRouter.route( route, {
                     name: name,
                     action(){
                         // as the usual rule, users which are not allowed to a page are redirected to home which is expected to be public
-                        // in izIAM, the coreLogin component manages a login panel to force the user to connect
+                        // as a configuration option, the coreLogin component manages a login panel to force the user to connect
                         //  so let the code go until coreAppContent
-                        const contentManaged = true;
+                        const contentManaged = CoreApp.configure().loginIfNotConnected;
                         // make sure the current user is allowed (or that the login is managed at coreAppContent level)
                         const wantPermission = unit.get( 'wantPermission' );
                         Promise.resolve( !wantPermission || Permissions.isAllowed( wantPermission )).then(( allowed ) => {
                             if( allowed || contentManaged ){
-                                console.debug( 'BlazeLayout.rendering()', name );
+                                console.debug( 'pwix:core-app BlazeLayout.rendering()', name );
                                 BlazeLayout.render( 'coreAppMain', { dataContext: { name: name }});
                             } else {
-                                console.warn( 'user appears as not allowed to \''+name+'\'' );
+                                console.warn( 'user appears as not allowed to \''+name+'\', and \'loginIfNotConnected\' is configured as false' );
                                 FlowRouter.go( '/' );
                             }
                         });

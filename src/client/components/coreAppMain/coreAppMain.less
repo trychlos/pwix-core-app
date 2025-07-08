@@ -204,6 +204,21 @@ body {
     }
 }
 
+.t-default-layout {
+    .core-login {
+        img {
+            width: 20em;
+            height: 20em;
+        }
+        .ac-text-one {
+            font-weight: bold;
+            font-style: italic;
+            font-size: 120%;
+            margin-bottom: 2em;
+        }
+    }
+}
+
 // a responsive padding left and right
 .app-hpad5 {
     padding-left: 0.25em;
@@ -241,6 +256,28 @@ body {
     @media screen and ( min-width: @ui-xl-width ){
         margin-left: 20em;
         margin-right: 20em;
+    }
+}
+
+// a responsive padding left and right
+.app-hpad20 {
+    padding-left: 1em;
+    padding-right: 1em;
+    @media screen and ( min-width: @ui-sm-width ){
+        margin-left: 5em;
+        margin-right: 5em;
+    }
+    @media screen and ( min-width: @ui-md-width ){
+        margin-left: 10em;
+        margin-right: 10em;
+    }
+    @media screen and ( min-width: @ui-lg-width ){
+        margin-left: 20em;
+        margin-right:20em;
+    }
+    @media screen and ( min-width: @ui-xl-width ){
+        margin-left: 40em;
+        margin-right: 40em;
     }
 }
 

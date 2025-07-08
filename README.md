@@ -191,6 +191,20 @@ Known configuration options are:
 
     Defaults to `t-default-layout`.
 
+- `loginIfNotConnected`
+
+    What to do when the non-connected user asks for a non-permitted page ? Either go back to the (expected-to-be-public) home page, or requests a login.
+
+    Defaults to `false`: the user is redirected to the home page, which is expected to be public.
+
+    When set to `true`, the user will be proposed a full page login screen.
+
+- `loginImage`
+
+    The path to an image rendered besides of the login panel.
+
+    Defaults to `/packages/pwix_core-app/resources/login-image.svg`.
+
 - `mainMenu`
 
     Defines the name of the main menu displayed in the header of the pages.

@@ -37,6 +37,8 @@ CoreApp._defaults = {
     colorTheme: 't-default-color',
     haveContentsManager: false,
     layoutTheme: 't-default-layout',
+    loginIfNotConnected: false,
+    loginImage: '/packages/pwix_core-app/resources/login-image.svg',
     mainMenu: 'coreAppMenu',
     managedLanguages: null,
     routePrefix: '/core-app',

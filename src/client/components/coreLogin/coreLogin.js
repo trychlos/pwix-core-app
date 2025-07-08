@@ -21,6 +21,11 @@ Template.coreLogin.onRendered( function(){
 });
 
 Template.coreLogin.helpers({
+    // a side image
+    image(){
+        return CoreApp.configure().loginImage;
+    },
+
     // user connection
     parmsUserLogin(){
         return {
@@ -31,7 +36,7 @@ Template.coreLogin.helpers({
             signupLink: false,
             signinTextOne: pwixI18n.label( I18N, 'accounts.login.preamble' ),
             resetLink: false,
-            name: 'MyApplication:core-app:core-login:user-login'
+            name: 'core-app:core-login:user-login'
         };
     }
 });

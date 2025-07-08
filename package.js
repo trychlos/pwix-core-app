@@ -67,6 +67,7 @@ function configure( api ){
         'src/client/components/coreGDPRLink/coreGDPRLink.js',
         'src/client/components/coreGTULink/coreGTULink.js',
         'src/client/components/coreLegalsLink/coreLegalsLink.js',
+        'src/client/components/coreLogin/coreLogin.js',
         'src/client/components/coreManagersPage/coreManagersPage.js',
         'src/client/components/corePoweredBy/corePoweredBy.js',
         'src/client/components/coreSaa/coreSaa.js',
@@ -78,6 +79,7 @@ function configure( api ){
     ], 'client' );
     api.addAssets([
         'resources/favicon.svg',
+        'resources/login-image.svg',
         'resources/meteor.ico',
         'resources/pwi-consulting-footer-logo.png',
         'resources/startup-app-admin.svg'

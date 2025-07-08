@@ -83,6 +83,7 @@ Template.coreAppLayout.onRendered( function(){
     });
 
     // compute the to-be-displayed template
+    //  these two below values for tests
     const forceSAA = false;
     const forceLogin = false;
 

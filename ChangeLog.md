@@ -15,6 +15,7 @@
     - Have an accounts manager
     - Have a tenants manager
     - Have a contents manager
+    - Have a configurable core login panel
 
 ### 1.0.0
 
