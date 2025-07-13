@@ -34,11 +34,13 @@ Template.coreManagersPage.onCreated( function(){
     };
 
     // whether the user is allowed to accounts manager ?
-    self.autorun(() => {
-        AccountsManager.isAllowed( 'pwix.accounts_manager.feat.list', Meteor.userId(), { amInstance: AccountsHub.getInstance( 'users' )})
-            .then(( allowed ) => {
-                self.PCK.accounts.allowed.set( allowed );
-            });
+    self.autorun( async () => {
+        const amInstance = AccountsHub.getInstance( 'users' );
+        let allowed = false;
+        if( amInstance ){
+            allowed = await AccountsManager.isAllowed( 'pwix.accounts_manager.feat.list', Meteor.userId(), { amInstance: amInstance });
+        }
+        self.PCK.accounts.allowed.set( allowed );
     });
 
     // whether the user is allowed to contents manager ?

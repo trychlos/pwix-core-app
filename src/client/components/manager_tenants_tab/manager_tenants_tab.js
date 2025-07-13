@@ -22,7 +22,11 @@ Template.manager_tenants_tab.onCreated( function(){
         createAllowed: new ReactiveVar( false ),
 
         // whether the user is allowed to list
-        listAllowed: new ReactiveVar( false )
+        listAllowed: new ReactiveVar( false ),
+
+        // the result of the reactive app function which provides TenantsEdit parms
+        listParmsNew: new ReactiveVar( null ),
+        listParmsEdit: new ReactiveVar( null )
     };
 
     // whether the user is allowed to create
@@ -34,6 +38,21 @@ Template.manager_tenants_tab.onCreated( function(){
     self.autorun(() => {
         TenantsManager.isAllowed( 'pwix.tenants_manager.feat.list' ).then(( allowed ) => { self.PCK.listAllowed.set( allowed ); });
     });
+
+    // if such a function is configured, then store its result in a reactive var
+    self.autorun( async () => {
+        const fn = CoreApp.configure().tenantsEditParms;
+        let resNew = fn;
+        let resEdit = fn;
+        if( fn ){
+            if( _.isFunction( fn )){
+                resNew = await fn( 'new' );
+                resEdit = await fn( 'edit' );
+            }
+            self.PCK.listParmsNew.set( resNew );
+            self.PCK.listParmsEdit.set( resEdit );
+        }
+    })
 });
 
 Template.manager_tenants_tab.helpers({
@@ -57,16 +76,22 @@ Template.manager_tenants_tab.helpers({
     // TenantNewButton parameters
     // disable the clients and accounts tabs for new tenant
     parmsTenantNew(){
-        return {
+        const _def = {
             shape: PlusButton.C.Shape.RECTANGLE,
             mdClasses: 'modal-xxl'
         };
+        const parms = Template.instance().PCK.listParmsNew.get() || {};
+        const res = _.merge( _def, parms );
+        return res;
     },
 
     // TenantsList parameters
     parmsTenantsList(){
-        return {
+        const _def = {
             mdClasses: 'modal-xxl'
         };
+        const parms = Template.instance().PCK.listParmsEdit.get() || {};
+        const res = _.merge( _def, parms );
+        return res;
     }
 });

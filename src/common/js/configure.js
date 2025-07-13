@@ -43,6 +43,7 @@ CoreApp._defaults = {
     mainMenu: 'coreAppMenu',
     managedLanguages: null,
     routePrefix: '/core-app',
+    tenantsEditParms: null,
     verbosity: CoreApp.C.Verbose.CONFIGURE
 };
 

@@ -229,6 +229,16 @@ Known configuration options are:
 
     Defaults to `/core-app`.
 
+- `tenantsEditParms`
+
+    An object or an async function `async fn( mode<String> ): <Object>` which returns such an object.
+
+    The passed-in `mode` is `new` or `edit`.
+
+    This object will be merged on top of default TenantsEditPanel, TenantsList and TenantNewButton components data contexts.
+
+    Defaults to none.
+
 - `verbosity`
 
     Defines the expected verbosity level.
