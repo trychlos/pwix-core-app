@@ -183,7 +183,13 @@ Known configuration options are:
 
     Whether the 'Managers' page has a 'Contents Manager' tab.
 
-    Defaults to `false`.
+    Defaults to `true`.
+
+- `haveTenantsManager`
+
+    Whether the 'Managers' page has a 'Tenants Manager' tab.
+
+    Defaults to `true`.
 
 - `layoutTheme`
 

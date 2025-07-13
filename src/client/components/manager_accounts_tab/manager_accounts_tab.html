@@ -7,7 +7,9 @@
                     <div class="core-preamble">
                         {{{ i18n key="manager.accounts.preamble" }}}
                     </div>
-                    {{> AccountNewButton (parmsNewAccount) }}
+                    {{#if canCreate }}
+                        {{> AccountNewButton (parmsNewAccount) }}
+                    {{/if}}
                 </div>
 
                 <div class="core-tab-body ui-mr1">

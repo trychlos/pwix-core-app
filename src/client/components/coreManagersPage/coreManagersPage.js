@@ -35,7 +35,7 @@ Template.coreManagersPage.onCreated( function(){
 
     // whether the user is allowed to accounts manager ?
     self.autorun(() => {
-        AccountsManager.isAllowed( 'pwix.accounts_manager.feat.list', Meteor.userId(), { amInstance: AccountsHub.instances.users })
+        AccountsManager.isAllowed( 'pwix.accounts_manager.feat.list', Meteor.userId(), { amInstance: AccountsHub.getInstance( 'users' )})
             .then(( allowed ) => {
                 self.PCK.accounts.allowed.set( allowed );
             });
@@ -56,8 +56,8 @@ Template.coreManagersPage.onCreated( function(){
 
     // whether the user is allowed to tenants manager ?
     self.autorun(() => {
-        if( TenantsManager.configure().enabled ){
-            TenantsManager.isAllowed( 'pwix.tenants_manager.pub.list_all', Meteor.userId())
+        if( CoreApp.configure().haveTenantsManager ){
+            TenantsManager.isAllowed( 'pwix.tenants_manager.feat.list', Meteor.userId())
                 .then(( allowed ) => {
                     self.PCK.tenants.allowed.set( allowed );
                 });

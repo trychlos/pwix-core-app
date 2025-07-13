@@ -18,20 +18,34 @@ Template.manager_tenants_tab.onCreated( function(){
     const self = this;
 
     self.PCK = {
+        // whether the user is allowed to create
+        createAllowed: new ReactiveVar( false ),
+
         // whether the user is allowed to list
-        allowed: new ReactiveVar( false ),
+        listAllowed: new ReactiveVar( false )
     };
+
+    // whether the user is allowed to create
+    self.autorun(() => {
+        TenantsManager.isAllowed( 'pwix.tenants_manager.feat.create' ).then(( allowed ) => { self.PCK.createAllowed.set( allowed ); });
+    });
 
     // whether the user is allowed to list
     self.autorun(() => {
-        TenantsManager.isAllowed( 'pwix.tenants_manager.pub.list_all' ).then(( allowed ) => { self.PCK.allowed.set( allowed ); });
+        TenantsManager.isAllowed( 'pwix.tenants_manager.feat.list' ).then(( allowed ) => { self.PCK.listAllowed.set( allowed ); });
     });
 });
 
 Template.manager_tenants_tab.helpers({
+    // whether the current user has the permission to create a new tenant
+    canCreate(){
+        const allowed = Template.instance().PCK.createAllowed.get();
+        return allowed;
+    },
+
     // whether the current user has the permission to see the list of tenants
     canList(){
-        const allowed = Template.instance().PCK.allowed.get();
+        const allowed = Template.instance().PCK.listAllowed.get();
         return allowed;
     },
 

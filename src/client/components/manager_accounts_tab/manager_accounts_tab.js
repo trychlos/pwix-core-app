@@ -19,23 +19,39 @@ Template.manager_accounts_tab.onCreated( function(){
     const self = this;
 
     self.PCK = {
+        // whether the current user has the permission to create a new account
+        createAllowed: new ReactiveVar( false ),
+
         // whether the current user has the permission to see the list of accounts
-        allowed: new ReactiveVar( false )
+        listAllowed: new ReactiveVar( false )
     };
+
+    // whether the current user has the permission to create a new account
+    self.autorun(() => {
+        AccountsManager.isAllowed( 'pwix.accounts_manager.feat.create', Meteor.userId(), { amInstance: AccountsHub.getInstance( 'users' )})
+            .then(( allowed ) => {
+                self.PCK.createAllowed.set( allowed );
+            });
+    });
 
     // whether the current user has the permission to see the list of accounts
     self.autorun(() => {
-        AccountsManager.isAllowed( 'pwix.accounts_manager.feat.list', Meteor.userId(), { amInstance: AccountsHub.instances.users })
+        AccountsManager.isAllowed( 'pwix.accounts_manager.feat.list', Meteor.userId(), { amInstance: AccountsHub.getInstance( 'users' )})
             .then(( allowed ) => {
-                self.PCK.allowed.set( allowed );
+                self.PCK.listAllowed.set( allowed );
             });
     });
 });
 
 Template.manager_accounts_tab.helpers({
+    // whether the current user has the permission to create a new account
+    canCreate(){
+        return Template.instance().PCK.createAllowed.get();
+    },
+
     // whether the current user has the permission to see the list of accounts
     canList(){
-        return Template.instance().PCK.allowed.get();
+        return Template.instance().PCK.listAllowed.get();
     },
 
     // string translation

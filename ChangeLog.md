@@ -16,6 +16,7 @@
     - Have a tenants manager
     - Have a contents manager
     - Have a configurable core login panel
+    - Update to new AccountsHub.getInstance() reactive function, to new AccountsManager and TenantsManager permissions
 
 ### 1.0.0
 
