@@ -9,6 +9,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import '../local_home_inline/local_home_inline.js';
 import '../local_home_label/local_home_label.js';
+import '../local_home_wait/local_home_wait.js';
 
 import './coreAppHome.html';
 

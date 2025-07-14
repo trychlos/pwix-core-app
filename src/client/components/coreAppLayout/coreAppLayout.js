@@ -14,6 +14,7 @@
 import _ from 'lodash';
 import { strict as assert } from 'node:assert';
 
+import { AccountsHub } from 'meteor/pwix:accounts-hub';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { Modal } from 'meteor/pwix:modal';
 
@@ -25,56 +26,21 @@ Template.coreAppLayout.onCreated( function(){
 
     self.PCK = {
         saa: {
-            havePackage: new ReactiveVar( false ),
-            isPackageReady: new ReactiveVar( false ),
             wantDisplay: new ReactiveVar( false )
         },
         tenants: {
-            havePackage: new ReactiveVar( false ),
-            enabled: new ReactiveVar( false ),
-            isPackageReady: new ReactiveVar( false ),
             wantDisplay: new ReactiveVar( false )
         }
     };
-
-    // whether we have the SAA package ?
-    // as of pwix:core-app v1.x, pwix:startup-app-admin is always included
-    self.autorun(() => {
-        self.PCK.saa.havePackage.set( Package['pwix:startup-app-admin'] !== undefined );
-    });
-
-    // whether we have the TenantsManager package ?
-    // as of pwix:core-app v1.x, pwix:tenants-manager is always included
-    self.autorun(() => {
-        self.PCK.tenants.havePackage.set( Package['pwix:tenants-manager'] !== undefined );
-    });
-
-    // whether the TenantsManager package is enabled ?
-    self.autorun(() => {
-        if( self.PCK.tenants.havePackage.get()){
-            self.PCK.tenants.enabled.set( Package['pwix:tenants-manager'].TenantsManager.configure().enabled );
-        }
-    });
 });
 
 Template.coreAppLayout.onRendered( function(){
     const self = this;
     //console.debug( this );
 
-    // if we have the SAA package, is it ready ?
+    // if we are ready, do we want display the admin creation panel ?
     self.autorun(() => {
-        self.PCK.saa.isPackageReady.set( self.PCK.saa.havePackage.get() && Package['pwix:startup-app-admin'].SAA.ready());
-    });
-
-    // if we have the SAA package and it is ready, do we want display the admin creation panel ?
-    self.autorun(() => {
-        self.PCK.saa.wantDisplay.set( self.PCK.saa.isPackageReady.get() && Package['pwix:startup-app-admin'].SAA.countAdmins.get() === 0 );
-    });
-
-    // if the TenantsManager package is enabled, is it ready ?
-    // as of pwix:tenants-manager v1.x, the package is always considered as ready (there is no ready() function)
-    self.autorun(() => {
-        self.PCK.tenants.isPackageReady.set( self.PCK.tenants.enabled.get() && true );
+        self.PCK.saa.wantDisplay.set( CoreApp.ready.get() && Package['pwix:startup-app-admin'].SAA.countAdmins.get() === 0 );
     });
 
     // if the TenantsManager package is enabled and ready, do we want display the tenant selector ?
@@ -88,39 +54,43 @@ Template.coreAppLayout.onRendered( function(){
     const forceLogin = false;
 
     self.autorun(() => {
-        // application doesn't have defined yet its administrator - let define it now
-        // remove menu and user buttons from header
-        if( self.PCK.saa.wantDisplay.get() || forceSAA ){
-            Meteor.APP.runContext.template( 'coreSaa' );
+        if( CoreApp.ready.get()){
+            // application doesn't have defined yet its administrator - let define it now
+            // remove menu and user buttons from header
+            if( self.PCK.saa.wantDisplay.get() || forceSAA ){
+                Meteor.APP.runContext.template( 'coreSaa' );
 
-        // we have our application administrator
-        // do we need to connect the user ?
-        } else {
-            const page = Meteor.APP.runContext.currentPage();
-            assert( page && page instanceof AppPages.DisplayUnit, 'expect an instance of AppPages.DisplayUnit, got '+page );
-            const wantLogin = page.get( 'wantPermission' );
-            if( wantLogin || forceLogin ){
-                if( Meteor.userId() && !forceLogin ){
-                    const wantScope = page.get( 'wantScope' );
-                    const tenant = Meteor.APP.runContext.tenant();
-                    if( wantScope ){
-                        if( tenant.entity?._id ){
-                            Meteor.APP.runContext.template( page.get( 'template' ), page.get( 'templateParms' ));
+            // we have our application administrator (or do not want one)
+            // do we need to connect the user ?
+            } else {
+                const page = Meteor.APP.runContext.currentPage();
+                assert( page && page instanceof AppPages.DisplayUnit, 'expect an instance of AppPages.DisplayUnit, got '+page );
+                const wantLogin = page.get( 'wantPermission' );
+                if( wantLogin || forceLogin ){
+                    if( Meteor.userId() && !forceLogin ){
+                        const wantScope = page.get( 'wantScope' );
+                        const tenant = Meteor.APP.runContext.tenant();
+                        if( wantScope ){
+                            if( tenant.entity?._id ){
+                                Meteor.APP.runContext.template( page.get( 'template' ), page.get( 'templateParms' ));
+                            } else {
+                                // want scope
+                                console.warn( 'the page requires a scope, but none is currently set, back to home' );
+                                FlowRouter.go( '/' );
+                            }
                         } else {
-                            // want scope
-                            console.warn( 'the page requires a scope, but none is currently set, back to home' );
-                            FlowRouter.go( '/' );
+                            Meteor.APP.runContext.template( page.get( 'template' ), page.get( 'templateParms' ));
                         }
                     } else {
-                        Meteor.APP.runContext.template( page.get( 'template' ), page.get( 'templateParms' ));
+                        // the asked page wants an identified user, but nobody is connected -> force a login page
+                        Meteor.APP.runContext.template( 'coreLogin' );
                     }
                 } else {
-                    // the asked page wants an identified user, but nobody is connected -> force a login page
-                    Meteor.APP.runContext.template( 'coreLogin' );
+                    Meteor.APP.runContext.template( page.get( 'template' ), page.get( 'templateParms' ));
                 }
-            } else {
-                Meteor.APP.runContext.template( page.get( 'template' ), page.get( 'templateParms' ));
             }
+        } else {
+            Meteor.APP.runContext.template( 'local_home_wait' );
         }
     });
 });

@@ -44,6 +44,9 @@ CoreApp.i18n = {
                 },
                 my_roles: 'Mes rôles'
             },
+            home: {
+                wait: 'Merci de bien vouloir patienter quelques instants...'
+            },
             legalslink: {
                 label: 'Mentions légales',
                 title: 'Mentions légales'

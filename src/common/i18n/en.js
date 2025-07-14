@@ -44,6 +44,9 @@ CoreApp.i18n = {
                 },
                 my_roles: 'My roles'
             },
+            home: {
+                wait: 'Please wait for readyness...'
+            },
             legalslink: {
                 label: 'Legals Informations',
                 title: 'Legals Informations'
