@@ -40,6 +40,7 @@ function configure( api ){
     _use( 'pwix:app-pages-edit@1.0.0-rc' );
     _use( 'pwix:app-pages-i18n@1.0.0-rc' );
     _use( 'pwix:blaze-layout@2.0.0' );
+    _use( 'pwix:editor@1.5.0' );
     _use( 'pwix:env-settings@2.0.0' );
     _use( 'pwix:env-settings-ext@1.0.0-rc' );
     _use( 'pwix:i18n@1.5.0' );
@@ -71,6 +72,7 @@ function configure( api ){
         'src/client/components/coreManagersPage/coreManagersPage.js',
         'src/client/components/corePoweredBy/corePoweredBy.js',
         'src/client/components/coreSaa/coreSaa.js',
+        'src/client/components/coreSerializer/coreSerializer.js',
         'src/client/components/coreSiteCopyright/coreSiteCopyright.js',
         'src/client/components/coreSiteEnv/coreSiteEnv.js',
         'src/client/components/coreSiteLogo/coreSiteLogo.js',

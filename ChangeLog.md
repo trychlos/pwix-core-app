@@ -18,6 +18,7 @@
     - Have a configurable core login panel
     - Update to new AccountsHub.getInstance() reactive function, to new AccountsManager and TenantsManager permissions
     - Update styles to new pwix:ui-utils definitions
+    - Define new coreSerializer component
 
 ### 1.0.0
 

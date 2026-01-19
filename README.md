@@ -139,6 +139,14 @@ Display a localized link as 'Powered by Meteor'.
 
 #### `coreSaa`
 
+Encapsulates the `teSerializer` component from `pwix:editor` package.
+
+Creates and manages a `CoreApp.Editor.asked` boolean ReactiveVar which reflects the status of the `teSwitch` toggle switch.
+
+Please note that whether the `teSwitch` component is itself visible is not considered here, and has to be managed by the calling application at a higher level.
+
+#### `coreSerializer`
+
 Encapsulates the `saaCreate` component from `pwix:startup-app-admin` package.
 
 ### Less mixins
