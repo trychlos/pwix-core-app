@@ -69,7 +69,7 @@ function configure( api ){
         'src/client/components/coreGTULink/coreGTULink.js',
         'src/client/components/coreLegalsLink/coreLegalsLink.js',
         'src/client/components/coreLogin/coreLogin.js',
-        'src/client/components/coreManagersPage/coreManagersPage.js',
+        //'src/client/components/coreManagersPage/coreManagersPage.js',
         'src/client/components/corePoweredBy/corePoweredBy.js',
         'src/client/components/coreSaa/coreSaa.js',
         'src/client/components/coreSerializer/coreSerializer.js',

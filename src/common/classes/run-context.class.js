@@ -16,14 +16,20 @@ import { strict as assert } from 'node:assert';
 import { AppPages } from 'meteor/pwix:app-pages';
 import { EnvSettings } from 'meteor/pwix:env-settings';
 import { Tracker } from 'meteor/tracker';
+import { ReactiveDict } from 'meteor/reactive-dict';
+import { ReactiveVar } from 'meteor/reactive-var';
+
+import { Layout } from './layout.class';
 
 export class RunContext extends AppPages.RunContext {
 
     // static data
 
-    // static methods
+    // the datacontexts set by someones
+    #dataContexts = new ReactiveDict();
 
-    // private data
+    // the current layout
+    #layout = new ReactiveVar( new Layout(), ( a, b ) => { return a.name() === b.name() });
 
     /*
      * from environment settings
@@ -68,7 +74,8 @@ export class RunContext extends AppPages.RunContext {
         Tracker.autorun(() => {
             if( EnvSettings.ready()){
                 EnvSettings.environmentSettings()
-                    .then(( settings ) => {
+                    .then(( res ) => {
+                        const settings = res?.settings;
                         if( settings ){
                             self.contact( settings.contact || 'AppContact <no-reply@localhost' );
                             self.copyright( settings.copyright || '' );
@@ -127,6 +134,36 @@ export class RunContext extends AppPages.RunContext {
 
     /**
      * Getter/Setter
+     * @summary Get/set a named datacontext
+     * 
+     *  - calling dataContext( object, { source }) will act as a setter
+     * @param {Object} dc the datacontext object - must be EJSONable
+     * @param {Object} opts an options object with following keys:
+     *  - source<String>: the name of the source
+     * @returns {Object} this same datacontext
+     * 
+     *  - calling dataContext( name ) will act as a getter, and return the previously set named data context
+     * @param {String} name the searched name
+     * @returns {Object} the named datacontext
+     */
+    dataContext( dc, opts ){
+        assert.ok( arguments.length === 1 || arguments.length === 2, 'RunContext.dataContext() expects one or two argument(s)' );
+        // a single argument: a getter
+        if( arguments.length === 1 ){
+            const name = arguments[0];
+            assert.ok( name && typeof( name ) === 'string',  'RunContext.dataContext() name must be a non-empty string, got', name );
+            return this.#dataContexts.get( name );
+        }
+        // two arguments: a setter
+        assert.ok( dc && typeof( dc ) === 'object', 'RunContext.dataContextSet() first argument must be an object, got', dc );
+        assert.ok( opts && typeof( opts ) === 'object', 'RunContext.dataContextSet() second argument must be an object, got', opts );
+        assert.ok( opts.source && typeof( opts.source ) === 'string',  'RunContext.dataContext() opts.source must be a non-empty string, got', opts.source );
+        this.#dataContexts.set( opts.source, dc );
+        return dc;
+    }
+
+    /**
+     * Getter/Setter
      * @locus Anywhere
      * @returns {String} the label of the application, read from the environment settings
      *  A reactive data souce
@@ -136,6 +173,15 @@ export class RunContext extends AppPages.RunContext {
             this.#label.set( str );
         }
         return this.#label.get();
+    }
+
+    /**
+     * @locus Anywhere (though only useful on the client)
+     * @returns {Layout} the layout object
+     */
+    layout(){
+        const layout = this.#layout.get();
+        return layout;
     }
 
     /**
@@ -167,7 +213,7 @@ export class RunContext extends AppPages.RunContext {
      */
     rightHeader( array ){
         if( typeof array !== 'undefined' ){
-            assert( array && _.isArray( array ), 'expect an array, got '+array );
+            assert( array && _.isArray( array ), 'expects an array, got '+array );
             this.#rightHeader.set( array );
         }
         return this.#rightHeader.get();

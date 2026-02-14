@@ -4,7 +4,7 @@
 
 import { YesNo } from '../definitions/yesno.def';
 
-import '../classes/run-context.class.js';
+import { RunContext } from '../classes/run-context.class.js';
 
 import './global.js';
 import './constants.js';
@@ -19,4 +19,5 @@ import './i18n.js';
 import './permissions.js';
 import './tenants-manager.js';
 
+CoreApp.RunContext = RunContext;
 CoreApp.YesNo = YesNo;
