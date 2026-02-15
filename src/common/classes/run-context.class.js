@@ -23,9 +23,6 @@ export class RunContext extends AppPages.RunContext {
 
     // static data
 
-    // the datacontexts set by someones
-    #dataContexts = new ReactiveDict();
-
     /*
      * from environment settings
      */
@@ -125,36 +122,6 @@ export class RunContext extends AppPages.RunContext {
             this.#copyright.set( str );
         }
         return this.#copyright.get();
-    }
-
-    /**
-     * Getter/Setter
-     * @summary Get/set a named datacontext
-     * 
-     *  - calling dataContext( object, { source }) will act as a setter
-     * @param {Object} dc the datacontext object - must be EJSONable
-     * @param {Object} opts an options object with following keys:
-     *  - source<String>: the name of the source
-     * @returns {Object} this same datacontext
-     * 
-     *  - calling dataContext( name ) will act as a getter, and return the previously set named data context
-     * @param {String} name the searched name
-     * @returns {Object} the named datacontext
-     */
-    dataContext( dc, opts ){
-        assert.ok( arguments.length === 1 || arguments.length === 2, 'RunContext.dataContext() expects one or two argument(s)' );
-        // a single argument: a getter
-        if( arguments.length === 1 ){
-            const name = arguments[0];
-            assert.ok( name && typeof( name ) === 'string',  'RunContext.dataContext() name must be a non-empty string, got', name );
-            return this.#dataContexts.get( name );
-        }
-        // two arguments: a setter
-        assert.ok( dc && typeof( dc ) === 'object', 'RunContext.dataContextSet() first argument must be an object, got', dc );
-        assert.ok( opts && typeof( opts ) === 'object', 'RunContext.dataContextSet() second argument must be an object, got', opts );
-        assert.ok( opts.source && typeof( opts.source ) === 'string',  'RunContext.dataContext() opts.source must be a non-empty string, got', opts.source );
-        this.#dataContexts.set( opts.source, dc );
-        return dc;
     }
 
     /**
