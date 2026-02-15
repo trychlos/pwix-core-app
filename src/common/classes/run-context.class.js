@@ -19,17 +19,12 @@ import { Tracker } from 'meteor/tracker';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { ReactiveVar } from 'meteor/reactive-var';
 
-import { Layout } from './layout.class';
-
 export class RunContext extends AppPages.RunContext {
 
     // static data
 
     // the datacontexts set by someones
     #dataContexts = new ReactiveDict();
-
-    // the current layout
-    #layout = new ReactiveVar( new Layout(), ( a, b ) => { return a.name() === b.name() });
 
     /*
      * from environment settings
@@ -173,15 +168,6 @@ export class RunContext extends AppPages.RunContext {
             this.#label.set( str );
         }
         return this.#label.get();
-    }
-
-    /**
-     * @locus Anywhere (though only useful on the client)
-     * @returns {Layout} the layout object
-     */
-    layout(){
-        const layout = this.#layout.get();
-        return layout;
     }
 
     /**
