@@ -20,7 +20,7 @@ Tracker.autorun(() => {
     // is the pwix:env-settings package ready ?
     ready &&= EnvSettings.ready();
     // is the 'users' accounts instance ready ?
-    ready &&= AccountsHub.getInstance( 'users' );
+    ready &&= Boolean( AccountsHub.getInstance( 'users' ));
     // is the pwix:roles package ready ?
     ready &&= Roles.ready();
     // is the pwix:startup-app-admin package ready (if enabled) ?

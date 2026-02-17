@@ -55,10 +55,21 @@ CoreApp._defaults = {
  */
 CoreApp.configure = function( o ){
     if( o && _.isObject( o )){
-        _conf = _.merge( CoreApp._defaults, _conf, o );
-        CoreApp._conf.set( _conf );
-        // be verbose if asked for
-        _verbose( CoreApp.C.Verbose.CONFIGURE, 'configure() with', o );
+        // check that keys exist
+        let built_conf = {};
+        Object.keys( o ).forEach(( it ) => {
+            if( Object.keys( AppPagesI18n._defaults ).includes( it )){
+                built_conf[it] = o[it];
+            } else {
+                console.warn( 'pwix:app-pages-i18n configure() ignore unmanaged key \''+it+'\'' );
+            }
+        });
+        if( Object.keys( CoreApp ).length ){
+            _conf = _.merge( CoreApp._defaults, _conf, built_conf );
+            CoreApp._conf.set( _conf );
+            // be verbose if asked for
+            _verbose( CoreApp.C.Verbose.CONFIGURE, 'configure() with', built_conf );
+        }
     }
     // also acts as a getter
     return CoreApp._conf.get();
