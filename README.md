@@ -8,18 +8,18 @@ The `pwix:core-app` package provides a common framework to applications by gathe
 
     - to be configure()'d:
 
-        - name: the application short name
+        - `appName`: the application short name
 
             It is not localized, and doesn't depend of the running environment
 
     - to be setup in environment settings:
 
-        - contact: a contact email address, defaulting to 'no-reply@localhost'
-        - copyright: a copyright string, defaulting to none
-        - label: the label of the application, defaulting to the application name
-        - logo: the path to the logo image, defaulting to '/packages/pwix_core-app/resources/favicon.svg'
-        - sender: the sender address of all emails sent by the application, defaulting to 'no-reply@localhost'
-        - title: the title of the browser window, defaulting to the application name
+        - `contact`: a contact email address, defaulting to 'no-reply@localhost'
+        - `copyright`: a copyright string, defaulting to none
+        - `label`: the label of the application, defaulting to the application name
+        - `logo`: the path to the logo image, defaulting to '/packages/pwix_core-app/resources/svg/favicon.svg'
+        - `sender`: the sender address of all emails sent by the application, defaulting to 'no-reply@localhost'
+        - `title`: the title of the browser window, defaulting to the application name
 
 Goal is to be able to initialize a running (though rather empty) application rather quickly, maximizing time to code actual application features.
 

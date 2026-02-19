@@ -11,15 +11,10 @@
     - Update dependencies
     - Fix configuration overrides
     - Obsolete Meteor.APP.name in favor of Meteor.APP.runContext.name() and defines other RunContext helpers
-    - Define core display components
-    - Have an accounts manager
-    - Have a tenants manager
-    - Have a contents manager
-    - Have a configurable core login panel
-    - Update to new AccountsHub.getInstance() reactive function, to new AccountsManager and TenantsManager permissions
     - Update styles to new pwix:ui-utils definitions
     - Define new coreSerializer component
     - configure() now warns for unmanaged keys
+    - Rearchitecture the resources
 
 ### 1.0.0
 

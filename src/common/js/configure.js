@@ -58,10 +58,10 @@ CoreApp.configure = function( o ){
         // check that keys exist
         let built_conf = {};
         Object.keys( o ).forEach(( it ) => {
-            if( Object.keys( AppPagesI18n._defaults ).includes( it )){
+            if( Object.keys( CoreApp._defaults ).includes( it )){
                 built_conf[it] = o[it];
             } else {
-                console.warn( 'pwix:app-pages-i18n configure() ignore unmanaged key \''+it+'\'' );
+                console.warn( 'pwix:core-app configure() ignore unmanaged key \''+it+'\'' );
             }
         });
         if( Object.keys( CoreApp ).length ){

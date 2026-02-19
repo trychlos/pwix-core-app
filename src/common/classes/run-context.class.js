@@ -72,7 +72,7 @@ export class RunContext extends AppPages.RunContext {
                             self.contact( settings.contact || 'AppContact <no-reply@localhost' );
                             self.copyright( settings.copyright || '' );
                             self.label( settings.label || self.name());
-                            self.logo( settings.logo || '/packages/pwix_core-app/resources/favicon.svg' );
+                            self.logo( settings.logo || '/packages/pwix_core-app/resources/svg/favicon.svg' );
                             self.sender( settings.sender || 'AppSender <no-reply@localhost' );
                             self.title( settings.title || self.name());
                         }
@@ -82,17 +82,17 @@ export class RunContext extends AppPages.RunContext {
 
         // trackt the current right header
         Tracker.autorun(() => {
-            console.debug( 'pwix:core-app RunContext->rightHeader()', self.rightHeader());
+            //console.debug( 'pwix:core-app RunContext->rightHeader()', self.rightHeader());
         });
 
         // trackt the current template and its data
         Tracker.autorun(() => {
-            console.debug( 'pwix:core-app RunContext->template()', self.template());
+            //console.debug( 'pwix:core-app RunContext->template()', self.template());
         });
 
         // trackt the current tenant
         Tracker.autorun(() => {
-            console.debug( 'pwix:core-app RunContext->tenant()', self.tenant());
+            //console.debug( 'pwix:core-app RunContext->tenant()', self.tenant());
         });
 
         return this;
