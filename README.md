@@ -51,19 +51,6 @@ The `AppPages.RunContext` class is extended with:
 
 ### Blaze components
 
-#### `coreAppMain`
-
-The topmost component of each displayed page of the application.
-
-It takes care of:
-
-- set the browser window title from the label read from environment settings
-- keeping the running data context,
-- hosting the Tolert (pwix:tolert) messages,
-- hosting the Cookies Manager (pwix:cookies-manager) messages
-
-and then run the `coreAppLayout` component.
-
 #### `coreCookiesLink`
 
 Display a link to the Cookies Policy.

@@ -68,7 +68,7 @@ CoreApp.i18n = {
                 }
             },
             powered_by: {
-                label: 'Powered by <img src="/packages/pwix_core-app/resources/meteor.ico" alt="Meteor" title="Meteor" height="16px" width="16px" /> Meteor&trade;'
+                label: 'Powered by <img src="/packages/pwix_core-app/resources/ico/meteor.ico" alt="Meteor" title="Meteor" height="16px" width="16px" /> Meteor&trade;'
             },
             yesno: {
                 no_short: 'No',

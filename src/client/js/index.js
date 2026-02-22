@@ -4,6 +4,7 @@
 
 import '../../common/js/index.js';
 
-// our functions
+import '../stylesheets/core-app.less';
+
 import './ready.js';
 import './routes.js';

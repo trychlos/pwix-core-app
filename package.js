@@ -56,20 +56,20 @@ function configure( api ){
     _use( 'tracker' );
     //_use( 'tracker', 'client' );
     api.addFiles([
-        'src/client/components/coreAppLegals/coreAppLegals.js',
-        'src/client/components/coreAppMenuButton/coreAppMenuButton.js',
+        //'src/client/components/coreAppLegals/coreAppLegals.js',
+        //'src/client/components/coreAppMenuButton/coreAppMenuButton.js',
         'src/client/components/coreCookiesLink/coreCookiesLink.js',
         'src/client/components/coreGDPRLink/coreGDPRLink.js',
         'src/client/components/coreGTULink/coreGTULink.js',
         'src/client/components/coreLegalsLink/coreLegalsLink.js',
-        'src/client/components/coreLogin/coreLogin.js',
+        //'src/client/components/coreLogin/coreLogin.js',
         'src/client/components/corePoweredBy/corePoweredBy.js',
-        'src/client/components/coreSaa/coreSaa.js',
-        'src/client/components/coreSerializer/coreSerializer.js',
-        'src/client/components/coreSiteCopyright/coreSiteCopyright.js',
-        'src/client/components/coreSiteEnv/coreSiteEnv.js',
-        'src/client/components/coreSiteLogo/coreSiteLogo.js',
-        'src/client/components/coreSiteName/coreSiteName.js',
+        //'src/client/components/coreSaa/coreSaa.js',
+        //'src/client/components/coreSerializer/coreSerializer.js',
+        //'src/client/components/coreSiteCopyright/coreSiteCopyright.js',
+        //'src/client/components/coreSiteEnv/coreSiteEnv.js',
+        //'src/client/components/coreSiteLogo/coreSiteLogo.js',
+        //'src/client/components/coreSiteName/coreSiteName.js',
         //'src/client/components/coreYesnoSelect/coreYesnoSelect.js'
     ], 'client' );
     api.addAssets([
