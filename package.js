@@ -65,7 +65,6 @@ function configure( api ){
         //'src/client/components/coreLogin/coreLogin.js',
         'src/client/components/corePoweredBy/corePoweredBy.js',
         //'src/client/components/coreSaa/coreSaa.js',
-        //'src/client/components/coreSerializer/coreSerializer.js',
         //'src/client/components/coreSiteCopyright/coreSiteCopyright.js',
         //'src/client/components/coreSiteEnv/coreSiteEnv.js',
         //'src/client/components/coreSiteLogo/coreSiteLogo.js',

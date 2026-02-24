@@ -29,6 +29,11 @@ Template.corePoweredBy.onRendered( function(){
 });
 
 Template.corePoweredBy.helpers({
+    // classes to be added to the component
+    classes(){
+        return this.classes || '';
+    },
+
     // string localization
     i18n( arg ){
         let label = pwixI18n.label( I18N, arg.hash.key );

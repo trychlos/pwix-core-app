@@ -12,7 +12,7 @@
     - Fix configuration overrides
     - Obsolete Meteor.APP.name in favor of Meteor.APP.runContext.name() and defines other RunContext helpers
     - Update styles to new pwix:ui-utils definitions
-    - Define new coreSerializer component
+    - Define new AppPagesEditSerializer component
     - configure() now warns for unmanaged keys
     - Rearchitecture the resources
 

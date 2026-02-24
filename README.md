@@ -65,20 +65,20 @@ Parameters can be provided:
 
 #### `coreFieldCheckIndicator`
 
-Display an indicator about the validity status of a field.
+#### Display an indicator about the validity status of a field.
 
-Parameters:
+#### Parameters:
 
-- type: a `CoreApp.FieldCheck` constant as `INVALID`, `NONE`, `UNCOMPLETE` or `VALID`.
+#### - type: a `CoreApp.FieldCheck` constant as `INVALID`, `NONE`, `UNCOMPLETE` or `VALID`.
 
 #### `coreFieldTypeIndicator`
 
-Display an indicator about the type of a field.
+#### Display an indicator about the type of a field.
 
-Parameters:
+#### Parameters:
 
-- type: a `CoreApp.FieldType` constant as `INFO`, `SAVE` or `WORK`
-- classes: if set, a list of classes to be added to the default ones.
+#### - type: a `CoreApp.FieldType` constant as `INFO`, `SAVE` or `WORK`
+#### - classes: if set, a list of classes to be added to the default ones.
 
 #### `coreGDPRLink`
 
@@ -118,23 +118,23 @@ Parameters can be provided:
 
 #### `coreLogin`
 
-Encapsulates the `acUserLogin` component from `pwix:accounts-ui` package.
+#### Encapsulates the `acUserLogin` component from `pwix:accounts-ui` package.
 
 #### `corePoweredBy`
 
 Display a localized link as 'Powered by Meteor'.
 
+Parameters can be provided:
+
+- `classes`: classes to be added to the component.
+
 #### `coreSaa`
 
-Encapsulates the `teSerializer` component from `pwix:editor` package.
+#### Encapsulates the `teSerializer` component from `pwix:editor` package.
 
-Creates and manages a `CoreApp.Editor.asked` boolean ReactiveVar which reflects the status of the `teSwitch` toggle switch.
+#### Creates and manages a `CoreApp.Editor.asked` boolean ReactiveVar which reflects the status of the `teSwitch` toggle switch.
 
-Please note that whether the `teSwitch` component is itself visible is not considered here, and has to be managed by the calling application at a higher level.
-
-#### `coreSerializer`
-
-Encapsulates the `saaCreate` component from `pwix:startup-app-admin` package.
+#### Please note that whether the `teSwitch` component is itself visible is not considered here, and has to be managed by the calling application at a higher level.
 
 ### Less mixins
 
