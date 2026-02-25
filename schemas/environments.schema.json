@@ -3,57 +3,230 @@
     "$id": "org.trychlos.pwix:core-app/schemas/environments.schema.json",
     "title": "Environments descriptions",
     "description_array": [
-        "We describe in 'private/config/server/environments.json' configuration file the per-environment configuration of the application."
+        " We describe in 'private/config/server/environments.json' configuration file the per-environment configuration of the application.",
+        "",
+        " +--------------------------+",
+        " | Settings per environment |",
+        " +--------------------------+",
+        "",
+        " This configuration is first available on server-side.",
+        " Thanks to pwix:env-settings-ext package, this same configuration - minus private part - is made available on client-side through:",
+        " - 'async EnvSettings.environmentSettings(): Promise<RuntimeObject>' function and",
+        " - 'EnvSettings.environmentData' reactive var which contains the very same <RuntimeObject> than returned by the above async function.",
+        "",
+        " The <RuntimeObject> has following keys:",
+        " - 'env': the APP_ENV environment value, defaulting to NODE_ENV one,",
+        " - 'environmentKeys': the configured list of keys used to have access to this environment;",
+        "   this is typically for example something like '[ Meteor.APP.name, 'environments' ],",
+        " - 'settings': the addressed settings content, which be null or undefined at very early startup of the application.",
+        "",
+        " Because of the asynchronous character of the startup of a Meteor application, these data should be accessed as:",
+        "",
+        "   import { EnvSettings } from 'meteor/pwix:env-settings';",
+        "   import { ReactiveVar } from 'meteor/reactive-var';",
+        "",
+        "   const title = new ReactiveVar( '' );",
+        "",
+        "   Tracker.autorun(() => {",
+        "       if( EnvSettings.ready()){",
+        "           EnvSettings.environmentSettings().then(( res ) => {",
+        "             title.set( res?.settings?.title );",
+        "           });",
+        "       }",
+        "   });",
+        "",
+        " +------------------+",
+        " | Application name |",
+        " +------------------+",
+        "",
+        " From Meteor point of view, the name of the application comes, in order of increasing precedence:",
+        " 1. from the name of the directory the application development code is run,",
+        " 2. from the package.json 'name' value, which defaults to direction name (1),",
+        " 3. from any other source.",
+        "",
+        " 1) and 2) points rather address a NodeJS semantic: they are used for npm resolution, metadata builts and more generally by all npm tooling.",
+        "",
+        " We have chosen to explicitely define the application name at code level, usually in 'imports/common/init/app.js', setting it in 'Meteor.APP.name' variable.",
+        " This is an application internal identifier, invariant in all targeted environments, and this is this very same identifier which is used as the topmost key of this JSON environment settings file.",
+        " Recommandation: do no try to produce any lowercase/uppercase effect. Keep it simple, single word, lowercase-only.",
+        "",
+        " Note 1:",
+        " The application can extend this schema as fully and deeply as it wants. This schema is in no way limitative. It is only authoritative for the described keys and their expected values.",
+        ""
     ],
     "type": "object",
-    "properties": {
-        "environments": {
-            "description": "The configuration of each environment as an object where keys are the environment identifier.",
+    "patternProperties": {
+        "^.*$": {
+            "description_array": [
+                "The application name as defined in 'Meteor.APP.name'.",
+                "Cf. 'Application name in the above comments",
+                "e.g. 'www.trychlos', 'iziam', etc."
+            ],
             "type": "object",
-            "patternProperties": {
-                "^.*$": {
-                    "description": "The identifier of the environment, to be addressed by the 'APP_ENV' environment variable on the server.",
-                    "type": "string"
-                }
-            },
             "properties": {
-                "type": {
-                    "description": "The type of the environment as known by NodeJS.",
-                    "type": "string",
-                    "enum": [
-                        "development",
-                        "staging",
-                        "production"
-                    ]
-                },
-                "contact": {
-                    "description": "An email address to be used in the 'Contact' page as the target of the sent email.",
-                    "type": "string",
-                    "default": "AppContact <no-reply@localhost>"
-                },
-                "private": {
+                "environments": {
                     "description_array": [
-                        "While other properties are available to the client via the 'environmentSettings()' function, those described in this object are kept on the server only.",
-                        "They so can include passwords and other sensible data though the maintainer could rather consider the 'maintainer/private/deployments.json' configuration file as addressed by 'meteor.pl deploy' verb."
+                        "The configuration of each environment as an object where keys are the environment identifier.",
+                        "Accessing the settings for this environment from Meteor code will so need to specify:",
+                        "- the application name as a string which doesn't depend of the environment,",
+                        "- the 'environments' key.",
+                        "These two values must be provided to EnvSettingsExt.configure({ environmentKeys: [keys] }) function."
                     ],
                     "type": "object",
-                    "properties": {
+                    "patternProperties": {
+                        "^.*$": {
+                            "description_array": [
+                                "The identifier of the environment, to be addressed by the 'APP_ENV' environment variable on the server."
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "contact": {
+                                    "description_array": [
+                                        "An email address to be used in the 'Contact' page as the target of the sent email.",
+                                        "This email address must be known by the target email system.",
+                                        "Default provided value below should only be used in development environment(s).",
+                                        "The value is made available by 'pwix:core-app' through the 'RunContext.contact()' reactive data source."
+                                    ],
+                                    "type": "string",
+                                    "default": "AppContact <no-reply@localhost>"
+                                },
+                                "copyright": {
+                                    "description_array": [
+                                        "A copyright string.",
+                                        "Whether and how it is used is up to the application.",
+                                        "The value is made available by 'pwix:core-app' through the 'RunContext.copyright()' reactive data source."
+                                    ],
+                                    "type": "string",
+                                    "default": ""
+                                },
+                                "head": {
+                                    "description_array": [
+                                        "Tags to be added in <head> part of all pages in this environment.",
+                                        "They can be completed and extended with per-DisplayUnit <head> tags with same schema.",
+                                        "Using this feature requires the application to have 'server-render' package."
+                                    ],
+                                    "type": "object",
+                                    "properties": {
+                                        "meta": {
+                                            "description_array": [
+                                                "A list of <meta> tag descriptions.",
+                                                "Each item of the array will create its own '<meta>' tag.",
+                                                "Every of the specified properties will be set in the built <meta> tag as in '<meta key=\"value\">'."
+                                            ],
+                                            "type": "array",
+                                            "item": "object",
+                                            "patternProperties": {
+                                                "^.*$": {
+                                                    "description": "The name and the value of the attribute to be set (see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta).",
+                                                    "enum": [
+                                                        "charset",
+                                                        "content",
+                                                        "http-equiv",
+                                                        "media",
+                                                        "name"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "title": {
+                                            "description_array": [
+                                                "The document title in browser sense."
+                                            ],
+                                            "type": "string",
+                                            "default": ""
+                                        }
+                                    }
+                                },
+                                "label": {
+                                    "description_array": [
+                                        "A label string.",
+                                        "Whether and how it is used is up to the application.",
+                                        "The value is made available by 'pwix:core-app' through the 'RunContext.label()' reactive data source."
+                                    ],
+                                    "type": "string",
+                                    "default": "<app_name>"
+                                },
+                                "logo": {
+                                    "description_array": [
+                                        "A logo URL.",
+                                        "Whether and how it is used is up to the application.",
+                                        "The value is made available by 'pwix:core-app' through the 'RunContext.logo()' reactive data source."
+                                    ],
+                                    "type": "string",
+                                    "default": "/packages/pwix_core-app/resources/svg/favicon.svg"
+                                },
+                                "private": {
+                                    "description_array": [
+                                        "While other properties are available to the client via the 'environmentSettings()' function, those described in this object are kept on the server only.",
+                                        "They so can include passwords and other sensible data though the maintainer could rather consider the 'maintainer/private/deployments.json' configuration file as addressed by 'meteor.pl deploy' verb."
+                                    ],
+                                    "type": "object",
+                                    "properties": {
+                                    }
+                                },
+                                "sender": {
+                                    "description_array": [
+                                        "The sender email address used when the application sends any email.",
+                                        "This email address must be known by the source email system, as the application needs to connect to this email system in order to send the email(s).",
+                                        "Default provided value below should only be used in development environment(s).",
+                                        "The value is made available by 'pwix:core-app' through the 'RunContext.sender()' reactive data source."
+                                    ],
+                                    "type": "string",
+                                    "default": "AppSender <no-reply@localhost>"
+                                },
+                                "title": {
+                                    "description_array": [
+                                        "An application title displayable in your application pages.",
+                                        "This is NOT the document title in the browser sense (see head.title for that).",
+                                        "This could for example be a HTML string to be displayed in the pages header"
+                                    ],
+                                    "type": "string",
+                                    "default": "<app_name>"
+                                },
+                                "type": {
+                                    "description_array": [
+                                        "The type of the environment as known by NodeJS.",
+                                        "There is no default value at the moment, and we fully rely on NodeJS runtime. This should be fixed."
+                                    ],
+                                    "type": "string",
+                                    "enum": [
+                                        "development",
+                                        "staging",
+                                        "production"
+                                    ]
+                                },
+                                "wantEditionSwitch": {
+                                    "description_array": [
+                                        "Whether this environment wants an edition toggle switch be displayed in its application pages.",
+                                        "Whether the edition toggle switch is actually displayed or not will also depend whether the page has a 'wantEditionSwitch' toggle too, and whether the user is allowed to.",
+                                        "The switch is managed by 'pwix:app-pages-edit' through 'AppPagesEdit.environmentWantSwitch()' reactive data source and 'AppPagesEditButton' Blaze component.",
+                                        "The switch has been used in: www.trychlos (dev:0)."
+                                    ],
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "wantResolutionDisplay": {
+                                    "description_array": [
+                                        "Whether this environment wants display the current size of the viewport.",
+                                        "The exact usage of this switch is free to the application. A common usage is to embed the 'pwix:ui-layout/UILayoutDisplay' Blaze component.",
+                                        "The switch has been used in: iziam, www.trychlos (dev:0)."
+                                    ],
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "wantVersionDisplay": {
+                                    "description_array": [
+                                        "Whether this environment wants display the current deployment version number.",
+                                        "The exact usage of this switch is free to the application.",
+                                        "Note that the version is updated by 'meteor.pl deploy' in 'private/config/public/version.json' file, and is so available in 'Meteor.settings.public[Meteor.APP.name].version' variable.",
+                                        "The switch has been used in: iziam, www.trychlos (dev:0)."
+                                    ],
+                                    "type": "boolean",
+                                    "default": false
+                                }
+                            }
+                        }
                     }
-                },
-                "sender": {
-                    "description": "The sender email address used when the application sends any email.",
-                    "type": "string",
-                    "default": "AppSender <no-reply@localhost>"
-                },
-                "title": {
-                    "description": "The application title displayed in the header of the application pages.",
-                    "type": "string",
-                    "default": "MyApplication AppLabel"
-                },
-                "wantEditionSwitch": {
-                    "description": "Whether this environment displays an edition switch in the header of the application pages.",
-                    "type": "boolean",
-                    "default": false
                 }
             }
         }

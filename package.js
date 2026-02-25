@@ -52,6 +52,7 @@ function configure( api ){
     _use( 'pwix:ui-utils@1.4.0' );
     _use( 'reactive-dict' );
     _use( 'reactive-var' );
+    _use( 'server-render' );
     _use( 'tmeasday:check-npm-versions@1.0.2 || 2.0.0-beta.0', 'server' );
     _use( 'tracker' );
     //_use( 'tracker', 'client' );
