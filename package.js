@@ -55,9 +55,7 @@ function configure( api ){
     _use( 'server-render' );
     _use( 'tmeasday:check-npm-versions@1.0.2 || 2.0.0-beta.0', 'server' );
     _use( 'tracker' );
-    //_use( 'tracker', 'client' );
     api.addFiles([
-        //'src/client/components/coreAppLegals/coreAppLegals.js',
         //'src/client/components/coreAppMenuButton/coreAppMenuButton.js',
         'src/client/components/coreCookiesLink/coreCookiesLink.js',
         'src/client/components/coreGDPRLink/coreGDPRLink.js',
