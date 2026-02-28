@@ -12,7 +12,8 @@
 | ---: | :---       | :---                       |
 |    9 | 2023- 9- 6 | Integrate legals, cgu, personal policy as templates + relevant links |
 |   11 | 2023- 9-28 | env-settings: package configuration is re-run when language changes - why? |
-|   20 |  |  |
+|   20 | 2026- 6-28 | seems that most of packages ready() are reactive data source, so CoreApp.ready shoudn't be a reactive var |
+|   21 |  |  |
 
 ---
 ## Done

@@ -8,7 +8,10 @@ import _ from 'lodash';
 import { strict as assert } from 'node:assert';
 
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { Logger } from 'meteor/pwix:logger';
 import { Tracker } from 'meteor/tracker';
+
+const logger = Logger.get();
 
 // https://github.com/veliovgroup/flow-router/wiki
 // DISABLE QUERY STRING COMPATIBILITY
@@ -18,7 +21,7 @@ FlowRouter.decodeQueryParamsOnce = true;
 // A catch-all route which redirects to /
 FlowRouter.route( '*', {
     action(){
-        console.log( 'catch-all route', FlowRouter.current());
+        logger.log( 'catch-all route', FlowRouter.current());
         FlowRouter.go( '/' );
     },
 });

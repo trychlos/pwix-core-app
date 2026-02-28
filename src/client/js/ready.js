@@ -9,9 +9,12 @@ import { strict as assert } from 'node:assert';
 
 import { AccountsHub } from 'meteor/pwix:accounts-hub';
 import { EnvSettings } from 'meteor/pwix:env-settings';
+import { Logger } from 'meteor/pwix:logger';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Roles } from 'meteor/pwix:roles';
 import { Tracker } from 'meteor/tracker';
+
+const logger = Logger.get();
 
 CoreApp.ready = new ReactiveVar( false );
 
@@ -36,5 +39,5 @@ Tracker.autorun(() => {
 });
 
 Tracker.autorun(() => {
-    console.debug( 'pwix:core-app ready', CoreApp.ready.get());
+    logger.debug( 'ready', CoreApp.ready.get());
 });

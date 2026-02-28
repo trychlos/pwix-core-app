@@ -11,10 +11,13 @@ import _ from 'lodash';
 import { strict as assert } from 'node:assert';
 
 import { AccountsUI } from 'meteor/pwix:accounts-ui';
+import { Logger } from 'meteor/pwix:logger';
 import { pwixI18n } from 'meteor/pwix:i18n';
 import { UILayout } from 'meteor/pwix:ui-layout';
 
 import './coreAppMenuButton.html';
+
+const logger = Logger.get();
 
 Template.coreAppMenuButton.onCreated( function(){
     const self = this;
@@ -35,7 +38,7 @@ Template.coreAppMenuButton.onCreated( function(){
 
     // track user menu content
     self.autorun(() => {
-        //console.debug( 'menuUnits', self.PCK.menuUnits.get());
+        //logger.debug( 'menuUnits', self.PCK.menuUnits.get());
     });
 });
 

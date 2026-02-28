@@ -5,7 +5,10 @@
 import _ from 'lodash';
 
 import { EnvSettings } from "meteor/pwix:env-settings";
+import { Logger } from 'meteor/pwix:logger';
 import { onPageLoad } from "meteor/server-render";
+
+const logger = Logger.get();
 
 onPageLoad(( sink ) => {
     if( EnvSettings.ready()){
@@ -29,7 +32,7 @@ onPageLoad(( sink ) => {
                                     return true;
                                 });
                             } else {
-                                console.warn( 'pwix:core-app expect head.meta be an array of objects, got', res.settings.head.meta );
+                                logger.warn( 'expect head.meta be an array of objects, got', res.settings.head.meta );
                             }
                             break;
                         case 'title':
@@ -37,7 +40,7 @@ onPageLoad(( sink ) => {
                             sink.appendToHead( html );
                             break;
                         default:
-                            console.warn( 'pwix:core-app unmanaged head key \''+key+'\'' );
+                            logger.warn( 'unmanaged head key \''+key+'\'' );
                             break;
                     }
                     return true;

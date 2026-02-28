@@ -15,6 +15,7 @@
     - Define new AppPagesEditSerializer component
     - configure() now warns for unmanaged keys
     - Rearchitecture the resources
+    - Use pwix:logger universal logger
 
 ### 1.0.0
 

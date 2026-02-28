@@ -14,10 +14,13 @@ import _ from 'lodash';
 import { strict as assert } from 'node:assert';
 
 import { AppPages } from 'meteor/pwix:app-pages';
+import { Logger } from 'meteor/pwix:logger';
 import { EnvSettings } from 'meteor/pwix:env-settings';
 import { Tracker } from 'meteor/tracker';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { ReactiveVar } from 'meteor/reactive-var';
+
+const logger = Logger.get();
 
 export class RunContext extends AppPages.RunContext {
 
@@ -82,17 +85,17 @@ export class RunContext extends AppPages.RunContext {
 
         // trackt the current right header
         Tracker.autorun(() => {
-            //console.debug( 'pwix:core-app RunContext->rightHeader()', self.rightHeader());
+            //logger.debug( 'pwix:core-app RunContext->rightHeader()', self.rightHeader());
         });
 
         // trackt the current template and its data
         Tracker.autorun(() => {
-            //console.debug( 'pwix:core-app RunContext->template()', self.template());
+            //logger.debug( 'pwix:core-app RunContext->template()', self.template());
         });
 
         // trackt the current tenant
         Tracker.autorun(() => {
-            //console.debug( 'pwix:core-app RunContext->tenant()', self.tenant());
+            //logger.debug( 'pwix:core-app RunContext->tenant()', self.tenant());
         });
 
         return this;

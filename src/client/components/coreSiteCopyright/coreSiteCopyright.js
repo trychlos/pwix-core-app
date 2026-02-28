@@ -5,11 +5,14 @@
 import _ from 'lodash';
 import { strict as assert } from 'node:assert';
 
+import { Logger } from 'meteor/pwix:logger';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import '../local_copyright/local_copyright.js';
 
 import './coreSiteCopyright.html';
+
+const logger = Logger.get();
 
 Template.coreSiteCopyright.onCreated( function(){
     const self = this;
@@ -26,11 +29,11 @@ Template.coreSiteCopyright.onCreated( function(){
                     if( res && _.isObject( res ) && res.template ){
                         self.PCK.template.set( res );
                     } else {
-                        console.warn( 'expects a { template, data } object, got', res );
+                        logger.warn( 'expects a { template, data } object, got', res );
                     }
                 });
         } else {
-            console.warn( 'expects \'appCopyrightTemplate\' be a function, got', CoreApp.configure().appCopyrightTemplate );
+            logger.warn( 'expects \'appCopyrightTemplate\' be a function, got', CoreApp.configure().appCopyrightTemplate );
         }
     });
 });

@@ -16,8 +16,8 @@
         "",
         " The <RuntimeObject> has following keys:",
         " - 'env': the APP_ENV environment value, defaulting to NODE_ENV one,",
-        " - 'environmentKeys': the configured list of keys used to have access to this environment;",
-        "   this is typically for example something like '[ Meteor.APP.name, 'environments' ],",
+        " - 'environmentsKeys': the configured list of keys used to have access to the environment settings;",
+        "    this is typically for example something like '[ Meteor.APP.name, 'environments' ],",
         " - 'settings': the addressed settings content, which be null or undefined at very early startup of the application.",
         "",
         " Because of the asynchronous character of the startup of a Meteor application, these data should be accessed as:",
@@ -154,6 +154,29 @@
                                     ],
                                     "type": "string",
                                     "default": "/packages/pwix_core-app/resources/svg/favicon.svg"
+                                },
+                                "packages": {
+                                    "description_array": [
+                                        "The description of which and how packages are to be re-configured for this environment.",
+                                        "This property is managed by pwix:env-settings-ext package."
+                                    ],
+                                    "type": "object",
+                                    "patternProperties": {
+                                        "^.*$": {
+                                            "description": "The name of the package to be reconfigured.",
+                                            "type": "object",
+                                            "properties": {
+                                                "global": {
+                                                    "description": "The name of the exported object of the package which contains the 'configure()' function.",
+                                                    "type": "string"
+                                                },
+                                                "conf": {
+                                                    "description": "An object which contains the configuration to be passed to the 'configure()' function.",
+                                                    "type": "object"
+                                                }
+                                            }
+                                        }
+                                    }
                                 },
                                 "private": {
                                     "description_array": [

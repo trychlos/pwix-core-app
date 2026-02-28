@@ -44,6 +44,7 @@ function configure( api ){
     _use( 'pwix:env-settings@2.0.0' );
     _use( 'pwix:env-settings-ext@1.0.0-rc' );
     _use( 'pwix:i18n@1.5.0' );
+    _use( 'pwix:logger@1.0.0-rc' );
     _use( 'pwix:modal@2.2.0' );
     _use( 'pwix:permissions@1.0.0' );
     _use( 'pwix:roles@1.2.0' );
