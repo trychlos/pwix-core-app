@@ -16,6 +16,7 @@
     - configure() now warns for unmanaged keys
     - Rearchitecture the resources
     - Use pwix:logger universal logger
+    - Define new CoreApp.autorunOnce() method to handle once-only autorun() code
 
 ### 1.0.0
 

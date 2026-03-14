@@ -20,7 +20,7 @@ Permissions.set({
                     return false;
                 },
                 // opts.amInstance: target amClass instance
-                // opts.id: the account identifier
+                // opts.rowId: the account identifier
                 async delete( userId, opts ){
                     if( opts.amInstance.name() === 'users' ){
                         return await Roles.userIsInRoles( Meteor.userId(), 'ACCOUNTS_MANAGER', { anyScope: true });
@@ -28,7 +28,7 @@ Permissions.set({
                     return false;
                 },
                 // opts.amInstance: target amClass instance
-                // opts.id: the account identifier
+                // opts.rowId: the account identifier
                 async edit( userId, opts ){
                     if( opts.amInstance.name() === 'users' ){
                         return await Roles.userIsInRoles( Meteor.userId(), 'ACCOUNTS_MANAGER', { anyScope: true });
