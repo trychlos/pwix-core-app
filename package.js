@@ -34,7 +34,7 @@ function configure( api ){
     _use( 'less@4.0.0', 'client' );
     _use( 'mongo@1.16.1 || 2.0.0-rc300.2' );
     _use( 'ostrio:flow-router-extra@3.10.0' );
-    _use( 'pwix:accounts-hub@1.0.0' );
+    _use( 'pwix:accounts-core@1.0.0 || 2.0.0-rc.0' );
     _use( 'pwix:accounts-manager@2.0.0' );
     _use( 'pwix:app-pages@1.0.0' );
     _use( 'pwix:app-pages-edit@1.0.0-rc' );
@@ -54,7 +54,7 @@ function configure( api ){
     _use( 'reactive-dict' );
     _use( 'reactive-var' );
     _use( 'server-render' );
-    _use( 'tmeasday:check-npm-versions@1.0.2 || 2.0.0-beta.0', 'server' );
+    _use( 'tmeasday:check-npm-versions@2.1.0', 'server' );
     _use( 'tracker' );
     api.addFiles([
         //'src/client/components/coreAppMenuButton/coreAppMenuButton.js',

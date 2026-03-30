@@ -17,6 +17,7 @@
     - Rearchitecture the resources
     - Use pwix:logger universal logger
     - Define new CoreApp.autorunOnce() method to handle once-only autorun() code
+    - Upgrade tmeasday:check-npm-versions to 2.1.0
 
 ### 1.0.0
 

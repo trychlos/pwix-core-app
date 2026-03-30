@@ -7,7 +7,7 @@
 import _ from 'lodash';
 import { strict as assert } from 'node:assert';
 
-import { AccountsHub } from 'meteor/pwix:accounts-hub';
+import { AccountsCore } from 'meteor/pwix:accounts-core';
 import { EnvSettings } from 'meteor/pwix:env-settings';
 import { Logger } from 'meteor/pwix:logger';
 import { ReactiveVar } from 'meteor/reactive-var';
@@ -23,7 +23,7 @@ Tracker.autorun(() => {
     // is the pwix:env-settings package ready ?
     ready &&= EnvSettings.ready();
     // is the 'users' accounts instance ready ?
-    ready &&= Boolean( AccountsHub.getInstance( 'users' ));
+    ready &&= Boolean( AccountsCore.getInstance( 'users' ));
     // is the pwix:roles package ready ?
     ready &&= Roles.ready();
     // is the pwix:startup-app-admin package ready (if enabled) ?
