@@ -12,14 +12,14 @@ Permissions.set({
     pwix: {
         accounts_manager: {
             feat: {
-                // opts.acInstance: target amClass instance
+                // opts.acInstance: target amAccount instance
                 async create( userId, opts ){
                     if( opts.acInstance.name() === 'users' ){
                         return await Roles.userIsInRoles( Meteor.userId(), 'ACCOUNTS_MANAGER', { anyScope: true });
                     }
                     return false;
                 },
-                // opts.acInstance: target amClass instance
+                // opts.acInstance: target amAccount instance
                 // opts.rowId: the account identifier
                 async delete( userId, opts ){
                     if( opts.acInstance.name() === 'users' ){
@@ -27,7 +27,7 @@ Permissions.set({
                     }
                     return false;
                 },
-                // opts.acInstance: target amClass instance
+                // opts.acInstance: target amAccount instance
                 // opts.rowId: the account identifier
                 async edit( userId, opts ){
                     if( opts.acInstance.name() === 'users' ){
@@ -35,7 +35,7 @@ Permissions.set({
                     }
                     return false;
                 },
-                // opts.acInstance: target amClass instance
+                // opts.acInstance: target amAccount instance
                 async list( userId, opts ){
                     if( opts.acInstance.name() === 'users' ){
                         return await Roles.userIsInRoles( Meteor.userId(), 'ACCOUNTS_MANAGER', { anyScope: true });

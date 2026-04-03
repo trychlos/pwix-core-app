@@ -92,3 +92,51 @@ CoreApp.autorunOnce = function( owner, prepare, action, opts={} ){
         });
     });
 }
+
+/**
+ * @locus Client
+ * @summary Install history debug (client only)
+ */
+CoreApp.installHistoryDebug = function(){
+    if( Meteor.isClient && !window.__historyDebugInstalled ){
+        window.__historyDebugInstalled = true;
+
+        const origPushState = history.pushState.bind( history );
+        const origReplaceState = history.replaceState.bind( history );
+
+        history.pushState = function( state, title, url ){
+            console.group( 'history.pushState()' );
+            console.debug( 'from', window.location.href );
+            console.debug( 'to  ', url );
+            console.trace();
+            console.groupEnd();
+            return origPushState( state, title, url );
+        };
+
+        history.replaceState = function( state, title, url ){
+            console.group( 'history.replaceState()' );
+            console.debug( 'from', window.location.href );
+            console.debug( 'to  ', url );
+            console.trace();
+            console.groupEnd();
+            return origReplaceState( state, title, url );
+        };
+
+        window.addEventListener( 'popstate', function( ev ){
+            console.group( 'window.popstate' );
+            console.debug( 'href', window.location.href );
+            console.debug( 'state', ev.state );
+            console.trace();
+            console.groupEnd();
+        });
+
+        window.addEventListener( 'hashchange', function(){
+            console.group( 'window.hashchange' );
+            console.debug( 'href ', window.location.href );
+            console.debug( 'hash ', window.location.hash );
+            console.debug( 'search', window.location.search );
+            console.trace();
+            console.groupEnd();
+        });
+    }
+};

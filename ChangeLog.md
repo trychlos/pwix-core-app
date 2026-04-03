@@ -18,6 +18,7 @@
     - Use pwix:logger universal logger
     - Define new CoreApp.autorunOnce() method to handle once-only autorun() code
     - Upgrade tmeasday:check-npm-versions to 2.1.0
+    - Define new (client-only) CoreApp.installHistoryDebug function
 
 ### 1.0.0
 
