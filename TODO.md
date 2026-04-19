@@ -12,7 +12,6 @@
 | ---: | :---       | :---                       |
 |    9 | 2023- 9- 6 | Integrate legals, cgu, personal policy as templates + relevant links |
 |   11 | 2023- 9-28 | env-settings: package configuration is re-run when language changes - why? |
-|   20 | 2026- 6-28 | seems that most of packages ready() are reactive data source, so CoreApp.ready shoudn't be a reactive var |
 |   21 |  |  |
 
 ---
@@ -53,6 +52,8 @@
 |      | 2024- 7-29 | moved to pwix:forms package |
 |   19 | 2024- 1-19 | namespace all triggered events (see https://api.jquery.com/on/) |
 |      | 2024- 7-29 | cancelled |
+|   20 | 2026- 3-28 | seems that most of packages ready() are reactive data source, so CoreApp.ready shoudn't be a reactive var |
+|      | 2026- 4-19 | CoreApp.ready() is now a reactive function |
 
 ---
 P. Wieser

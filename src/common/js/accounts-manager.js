@@ -10,34 +10,34 @@ import { Roles } from 'meteor/pwix:roles';
 
 Permissions.set({
     pwix: {
-        accounts_manager: {
+        accounts_core: {
             feat: {
-                // opts.acInstance: target amAccount instance
+                // opts.instance: target amAccount instance
                 async create( userId, opts ){
-                    if( opts.acInstance.name() === 'users' ){
+                    if( opts.instance.name() === 'users' ){
                         return await Roles.userIsInRoles( Meteor.userId(), 'ACCOUNTS_MANAGER', { anyScope: true });
                     }
                     return false;
                 },
-                // opts.acInstance: target amAccount instance
+                // opts.instance: target amAccount instance
                 // opts.rowId: the account identifier
                 async delete( userId, opts ){
-                    if( opts.acInstance.name() === 'users' ){
+                    if( opts.instance.name() === 'users' ){
                         return await Roles.userIsInRoles( Meteor.userId(), 'ACCOUNTS_MANAGER', { anyScope: true });
                     }
                     return false;
                 },
-                // opts.acInstance: target amAccount instance
+                // opts.instance: target amAccount instance
                 // opts.rowId: the account identifier
                 async edit( userId, opts ){
-                    if( opts.acInstance.name() === 'users' ){
+                    if( opts.instance.name() === 'users' ){
                         return await Roles.userIsInRoles( Meteor.userId(), 'ACCOUNTS_MANAGER', { anyScope: true });
                     }
                     return false;
                 },
-                // opts.acInstance: target amAccount instance
+                // opts.instance: target amAccount instance
                 async list( userId, opts ){
-                    if( opts.acInstance.name() === 'users' ){
+                    if( opts.instance.name() === 'users' ){
                         return await Roles.userIsInRoles( Meteor.userId(), 'ACCOUNTS_MANAGER', { anyScope: true });
                     }
                     return false;

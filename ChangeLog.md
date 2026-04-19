@@ -19,6 +19,7 @@
     - Define new CoreApp.autorunOnce() method to handle once-only autorun() code
     - Upgrade tmeasday:check-npm-versions to 2.1.0
     - Define new (client-only) CoreApp.installHistoryDebug function
+    - CoreApp.ready() is now a reactive function (todo #20)
 
 ### 1.0.0
 

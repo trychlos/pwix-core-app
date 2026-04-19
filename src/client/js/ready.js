@@ -16,7 +16,11 @@ import { Tracker } from 'meteor/tracker';
 
 const logger = Logger.get();
 
-CoreApp.ready = new ReactiveVar( false );
+CoreApp._ready = new ReactiveVar( false );
+
+CoreApp.ready = function(){
+    return CoreApp._ready.get();
+};
 
 Tracker.autorun(() => {
     let ready = true;
@@ -35,9 +39,9 @@ Tracker.autorun(() => {
         ready &&= Boolean( Package['pwix:tenants-manager'] );
     }
     // set the readyness result
-    CoreApp.ready.set( ready );
+    CoreApp._ready.set( ready );
 });
 
 Tracker.autorun(() => {
-    logger.debug( 'ready', CoreApp.ready.get());
+    logger.debug( 'ready', CoreApp.ready());
 });
