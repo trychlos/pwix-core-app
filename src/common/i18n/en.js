@@ -41,8 +41,7 @@ CoreApp.i18n = {
             header: {
                 menu: {
                     managers: 'Managers'
-                },
-                my_roles: 'My roles'
+                }
             },
             home: {
                 wait: 'Please wait for readyness...'

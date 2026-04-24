@@ -12,7 +12,6 @@ import './configure.js';
 import './trace.js';
 //
 import './accounts-manager.js';
-import './accounts-ui.js';
 import './app.js';
 import './display-unit-defs.js';
 import './functions.js';
