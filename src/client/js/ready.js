@@ -43,5 +43,5 @@ Tracker.autorun(() => {
 });
 
 Tracker.autorun(() => {
-    logger.debug( 'ready', CoreApp.ready());
+    logger.debug( 'ready()', CoreApp.ready());
 });
