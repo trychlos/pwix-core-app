@@ -26,6 +26,8 @@ Tracker.autorun(() => {
     let ready = true;
     // is the pwix:env-settings package ready ?
     ready &&= EnvSettings.ready();
+    // is the pwix:accounts-core package ready ?
+    ready &&= AccountsCore.ready();
     // is the 'users' accounts instance ready ?
     ready &&= Boolean( AccountsCore.getInstance( 'users' ));
     // is the pwix:roles package ready ?
