@@ -16,6 +16,8 @@ import { strict as assert } from 'node:assert';
 import { AppPages } from 'meteor/pwix:app-pages';
 import { Logger } from 'meteor/pwix:logger';
 import { EnvSettings } from 'meteor/pwix:env-settings';
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { Permissions } from 'meteor/pwix:permissions';
 import { Tracker } from 'meteor/tracker';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { ReactiveVar } from 'meteor/reactive-var';
@@ -49,8 +51,6 @@ export class RunContext extends AppPages.RunContext {
     #rightHeader = new ReactiveVar( CoreApp.C.RightHeader, _.isEqual );
     // the current displayed template and its data
     #template = new ReactiveVar({ template: null, data: null }, _.isEqual );
-    // the current tenant entity and validity period
-    #tenant = new ReactiveVar({ entity: null, record: null }, _.isEqual );
 
     // private methods
 
@@ -206,22 +206,6 @@ export class RunContext extends AppPages.RunContext {
     /**
      * Getter/Setter
      * @locus Anywhere
-     * @param entity the tenant entity
-     * @param record the current tenant validity period
-     * @returns {Object} the computed current { entity, record } object
-     *  In single-tenant mode (where we do not manage validity periods), we still have at least an entity
-     *  A reactive data souce
-     */
-    tenant( entity, record ){
-        if( typeof entity !== 'undefined' ){
-            this.#tenant.set({ entity: entity, record: record });
-        }
-        return this.#tenant.get();
-    }
-
-    /**
-     * Getter/Setter
-     * @locus Anywhere
      * @returns {String} the title of the application, read from the environment settings
      *  A reactive data souce
      */
@@ -230,6 +214,20 @@ export class RunContext extends AppPages.RunContext {
             this.#title.set( str );
         }
         return this.#title.get();
+    }
+
+    /**
+     * @locus Anywhere
+     * @access public
+     * @param {String} name the current page
+     * @returns {Boolean} true if the current user is allowed to the current page
+     */
+    async validate( name, opts={} ){
+        // make sure the current user is allowed
+        const displaySet = AppPages.displaySet.get();
+        const unit = displaySet.byName( name );
+        const wantPermission = unit.get( 'wantPermission' );
+        return !wantPermission || await Permissions.isAllowed( wantPermission );
     }
 }
 
