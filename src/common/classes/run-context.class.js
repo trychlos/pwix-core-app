@@ -49,8 +49,6 @@ export class RunContext extends AppPages.RunContext {
      */
     // the content of the right part of the header
     #rightHeader = new ReactiveVar( CoreApp.C.RightHeader, _.isEqual );
-    // the current displayed template and its data
-    #template = new ReactiveVar({ template: null, data: null }, _.isEqual );
 
     // private methods
 
@@ -83,17 +81,12 @@ export class RunContext extends AppPages.RunContext {
             }
         });
 
-        // trackt the current right header
+        // track the current right header
         Tracker.autorun(() => {
             //logger.debug( 'pwix:core-app RunContext->rightHeader()', self.rightHeader());
         });
 
-        // trackt the current template and its data
-        Tracker.autorun(() => {
-            //logger.debug( 'pwix:core-app RunContext->template()', self.template());
-        });
-
-        // trackt the current tenant
+        // track the current tenant
         Tracker.autorun(() => {
             //logger.debug( 'pwix:core-app RunContext->tenant()', self.tenant());
         });
@@ -186,21 +179,6 @@ export class RunContext extends AppPages.RunContext {
             this.#sender.set( str );
         }
         return this.#sender.get();
-    }
-
-    /**
-     * Getter/Setter
-     * @locus Anywhere
-     * @param template the template name
-     * @param data the template data
-     * @returns {Object} the computed current { template, data } object 
-     *  A reactive data souce
-     */
-    template( template, data ){
-        if( typeof template !== 'undefined' ){
-            this.#template.set({ template: template, data: data });
-        }
-        return this.#template.get();
     }
 
     /**
