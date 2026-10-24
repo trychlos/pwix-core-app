@@ -17,7 +17,7 @@
         " The <RuntimeObject> has following keys:",
         " - 'env': the APP_ENV environment value, defaulting to NODE_ENV one,",
         " - 'environmentsKeys': the configured list of keys used to have access to the environment settings;",
-        "    this is typically for example something like '[ Meteor.APP.name, 'environments' ],",
+        "    this is typically for example something like '[ Meteor.APP.C.appName, 'environments' ],",
         " - 'settings': the addressed settings content, which be null or undefined at very early startup of the application.",
         "",
         " Because of the asynchronous character of the startup of a Meteor application, these data should be accessed as:",
@@ -46,7 +46,7 @@
         "",
         " 1) and 2) points rather address a NodeJS semantic: they are used for npm resolution, metadata builts and more generally by all npm tooling.",
         "",
-        " We have chosen to explicitely define the application name at code level, usually in 'imports/common/init/app.js', setting it in 'Meteor.APP.name' variable.",
+        " We have chosen to explicitely define the application name at code level, usually in 'imports/common/init/app.js', setting it in 'Meteor.APP.C.appName' variable.",
         " This is an application internal identifier, invariant in all targeted environments, and this is this very same identifier which is used as the topmost key of this JSON environment settings file.",
         " Recommandation: do no try to produce any lowercase/uppercase effect. Keep it simple, single word, lowercase-only.",
         "",
@@ -58,7 +58,7 @@
     "patternProperties": {
         "^.*$": {
             "description_array": [
-                "The application name as defined in 'Meteor.APP.name'.",
+                "The application name as defined in 'Meteor.APP.C.appName'.",
                 "Cf. 'Application name in the above comments",
                 "e.g. 'www.trychlos', 'iziam', etc."
             ],
@@ -241,7 +241,7 @@
                                     "description_array": [
                                         "Whether this environment wants display the current deployment version number.",
                                         "The exact usage of this switch is free to the application.",
-                                        "Note that the version is updated by 'meteor.pl deploy' in 'private/config/public/version.json' file, and is so available in 'Meteor.settings.public[Meteor.APP.name].version' variable.",
+                                        "Note that the version is updated by 'meteor.pl deploy' in 'private/config/public/version.json' file, and is so available in 'Meteor.settings.public[Meteor.APP.C.appName].version' variable.",
                                         "The switch has been used in: iziam, www.trychlos (dev:0)."
                                     ],
                                     "type": "boolean",

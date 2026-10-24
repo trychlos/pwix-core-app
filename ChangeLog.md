@@ -10,7 +10,7 @@
     - Actually check NPMs at startup
     - Update dependencies
     - Fix configuration overrides
-    - Obsolete Meteor.APP.name in favor of Meteor.APP.runContext.name() and defines other RunContext helpers
+    - Obsolete Meteor.APP.C.appName in favor of Meteor.APP.runContext.name() and defines other RunContext helpers
     - Update styles to new pwix:ui-utils definitions
     - Define new AppPagesEditSerializer component
     - configure() now warns for unmanaged keys
