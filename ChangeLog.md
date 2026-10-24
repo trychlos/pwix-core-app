@@ -21,6 +21,7 @@
     - Define new (client-only) CoreApp.installHistoryDebug function
     - CoreApp.ready() is now a reactive function (todo #20)
     - Define new RunContext.validate() method
+    - Bump pwix:app-pages, pwix:app-pages-edit version prequisites
 
 ### 1.0.0
 

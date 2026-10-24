@@ -36,8 +36,8 @@ function configure( api ){
     _use( 'ostrio:flow-router-extra@3.10.0' );
     _use( 'pwix:accounts-core@1.0.0 || 2.0.0-rc.0' );
     _use( 'pwix:accounts-manager@2.0.0' );
-    _use( 'pwix:app-pages@1.0.0' );
-    _use( 'pwix:app-pages-edit@1.0.0-rc' );
+    _use( 'pwix:app-pages@1.4.0' );
+    _use( 'pwix:app-pages-edit@1.3.0' );
     _use( 'pwix:app-pages-i18n@1.0.0-rc' );
     _use( 'pwix:blaze-layout@2.0.0' );
     _use( 'pwix:editor@1.5.0' );
