@@ -2,9 +2,9 @@
 
 ## ChangeLog
 
-### 1.1.0-rc
+### 1.1.0
 
-    Release date: 
+    Release date: 2026-10-24
 
     - Remove date.js and other obsolete code from this package
     - Actually check NPMs at startup
@@ -30,4 +30,4 @@
 
 ---
 P. Wieser
-- Last updated on 2024, Jul. 29th
+- Last updated on 2026, Oct. 24th
